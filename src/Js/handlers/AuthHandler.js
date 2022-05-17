@@ -9,3 +9,12 @@ const login = async (data) => {
   localStorage.setItem("Token", user);
   return true;
 };
+
+const register = async (data) => {
+  const user = await UserService.register(data);
+  if (user.id !== undefined) {
+    localStorage.setItem("userId", user.id);
+    return true;
+  }
+  return false;
+};
