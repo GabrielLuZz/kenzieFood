@@ -43,10 +43,10 @@ const headerSignIn = () => {
   return button;
 };
 
-const headerUser = (userImg) => {
+const headerUser = () => {
   const img = document.createElement("img");
   img.classList.add("header__user");
-  img.src = userImg;
+  img.src = "../src/assets/img/defaultUser.png";
   img.addEventListener("click", (event) => {
     event.preventDefault();
     headerUserPopUp();
