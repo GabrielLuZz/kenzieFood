@@ -1,3 +1,88 @@
-:root {
-    -cor-do-botao: #fff;
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap");
+
+.header {
+  width: 100%;
+  font-family: "Poppins";
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  background: #fafafa;
+}
+
+.header__strong {
+  font-weight: 700;
+  font-size: 21px;
+  margin-left: 18px;
+  margin-top: 21px;
+}
+
+.header__small {
+  font-weight: 700;
+  font-size: 16px;
+  color: #ff2253;
+  margin-left: 7px;
+  margin-top: 26px;
+}
+.header__search--container {
+  gap: 14px;
+  width: 70%;
+  height: 50px;
+  margin-left: 18px;
+  margin-top: 50px;
+  background-color: #e9ecef;
+  color: #868e96;
+  border: 1.5px solid #e9ecef;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.header__search--container.active {
+  width: 90%;
+}
+.header__search--container:focus {
+  border: 1.5px solid #212529;
+  border-radius: 12px;
+}
+.header__search:focus::placeholder {
+  opacity: 0;
+}
+
+.header__search:hover::placeholder {
+  padding-left: 10px;
+  transition: ease-in-out 0.4s;
+}
+.header__search::placeholder {
+  transition: ease-out 0.4s;
+}
+.header__icon {
+  width: 18px;
+  height: 18px;
+  margin-left: 18px;
+}
+.header__search {
+  font-family: "Poppins";
+  width: 100%;
+  height: 100%;
+}
+.header__signin {
+  font-family: "Inter";
+  font-weight: 500;
+  color: #f8f9fa;
+  background-color: #ff2253;
+  width: 60px;
+  height: 48px;
+  border: 1.5px solid #ff2253;
+  border-radius: 20px;
+  margin-top: 50px;
+  margin-left: 8px;
+}
+
+.header__user {
+  width: 30px;
+  position: absolute;
+  top: 3%;
+  right: 6%;
 }
