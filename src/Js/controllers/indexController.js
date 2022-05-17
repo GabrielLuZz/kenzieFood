@@ -1,3 +1,3 @@
-import { headerMain } from "../handlers/ShowHandler.js";
+import { ShowHandler } from "../handlers/ShowHandler.js";
 
-headerMain();
+ShowHandler.headerMain();

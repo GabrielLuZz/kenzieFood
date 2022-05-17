@@ -1,40 +1,38 @@
-import { AuthHandler } from './AuthHandler.js'
+//import { AuthHandler } from "./AuthHandler.js";
 
 export class ShowHandler {
-
-  static filterPerCategory(products,category) {
-      const filterProducts = products.filter((product) => product.categoria.toLowerCase() === category.toLowerCase())
-      return filterProducts
+  static filterPerCategory(products, category) {
+    const filterProducts = products.filter(
+      (product) => product.categoria.toLowerCase() === category.toLowerCase()
+    );
+    return filterProducts;
   }
 
-  static searchedProducts(texto,products) {
-      const searchedProducts = []
-      products.forEach(product => {
-          if(product.nome.toLowerCase().includes(texto)){
-              searchedProducts.push(product)
-          }
-          else if (product.categoria.toLowerCase().includes(texto)){
-              searchedProducts.push(product)
-          }
-          else if (product.descricao.toLowerCase().includes(texto)){
-              searchedProducts.push(product)
-          }
-      });
-      return searchedProducts
-
+  static searchedProducts(texto, products) {
+    const searchedProducts = [];
+    products.forEach((product) => {
+      if (product.nome.toLowerCase().includes(texto)) {
+        searchedProducts.push(product);
+      } else if (product.categoria.toLowerCase().includes(texto)) {
+        searchedProducts.push(product);
+      } else if (product.descricao.toLowerCase().includes(texto)) {
+        searchedProducts.push(product);
+      }
+    });
+    return searchedProducts;
   }
 
   static async headerMain() {
-    let verify = await Authentication.userVerify();
+    let verify = false; //await AuthHandler.userVerify();
     const container = document.querySelector(".header");
-    container.appendChild(headerTitle());
-    container.appendChild(headerSub());
-    container.appendChild(headerSearch());
+    container.appendChild(this.headerTitle());
+    container.appendChild(this.headerSub());
+    container.appendChild(this.headerSearch());
 
     if (verify) {
-      container.appendChild(headerUser());
+      container.appendChild(this.headerUser());
     } else {
-      container.appendChild(headerSignIn());
+      container.appendChild(this.headerSignIn());
     }
   }
 
@@ -53,37 +51,43 @@ export class ShowHandler {
   }
 
   static headerSearch() {
+    const container = document.createElement("div");
+    container.classList.add("header__search--container");
+
+    const img = document.createElement("img");
+    img.src = "../src/assets/img/search.png";
+    img.classList.add("header__icon");
+
     const input = document.createElement("input");
     input.classList.add("header__search");
     input.type = "text";
     input.name = "searchBar";
     input.placeholder = "Pesquisar por produto";
-    return input;
+
+    container.appendChild(img);
+    container.appendChild(input);
+    return container;
   }
+
+  static headerSearchIcon() {}
 
   static headerSignIn() {
     const button = document.createElement("button");
-    button.classList.add("header__singup");
+    button.classList.add("header__signin");
     button.innerText = "Sign in";
     return button;
   }
 
   static headerUser() {
-   const img = document.createElement("img");
+    const img = document.createElement("img");
     img.classList.add("header__user");
     img.src = "../src/assets/img/defaultUser.png";
     img.addEventListener("click", (event) => {
       event.preventDefault();
       headerUserPopUp();
     });
-    return img; 
+    return img;
   }
 
-  static headerUserPopUp(event) {
-
-  }
-
+  static headerUserPopUp(event) {}
 }
-
-
-
