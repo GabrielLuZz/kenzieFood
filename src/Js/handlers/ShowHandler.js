@@ -1,7 +1,6 @@
-export { headerUserPopUp };
-
+import { Authentication } from "./AuthHandler.js";
 export const headerMain = async () => {
-  let verify = true; //await Authentication.userVerify();
+  let verify = await Authentication.userVerify();
   const container = document.querySelector(".header");
   container.appendChild(headerTitle());
   container.appendChild(headerSub());
