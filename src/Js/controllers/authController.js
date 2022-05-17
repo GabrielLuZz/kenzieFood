@@ -1,3 +1,4 @@
+export { Authentication };
 class Authentication {
   static async userVerify() {
     const token = localStorage.getItem("Token");
