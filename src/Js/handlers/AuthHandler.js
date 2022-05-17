@@ -1,10 +1,11 @@
 import { UserService } from "../services/UserService.js";
+
 export class Authentication {
   static async userVerify() {
     const token = localStorage.getItem("Token");
     let data = {};
     if (token !== null) {
-      data = await Us.privateProducts(token);
+      data = await UserService.privateProducts(token);
     }
     if (data.message !== undefined) {
       return false;
@@ -13,9 +14,8 @@ export class Authentication {
     }
   }
 }
-
-const login = async (data) => {
-  const user = await Api.login(data);
+export const login = async (data) => {
+  const user = await UserService.loginUser(data);
   if (user.error !== undefined) {
     return false;
   }
@@ -23,7 +23,7 @@ const login = async (data) => {
   return true;
 };
 
-const register = async (data) => {
+export const register = async (data) => {
   const user = await UserService.register(data);
   if (user.id !== undefined) {
     localStorage.setItem("userId", user.id);
