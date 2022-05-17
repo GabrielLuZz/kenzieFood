@@ -1,4 +1,4 @@
-//import { AuthHandler } from "./AuthHandler.js";
+import { AuthHandler } from "./AuthHandler.js";
 
 export class ShowHandler {
   static filterPerCategory(products, category) {
@@ -23,7 +23,7 @@ export class ShowHandler {
   }
 
   static async headerMain() {
-    let verify = false; //await AuthHandler.userVerify();
+    let verify = await AuthHandler.userVerify();
     const container = document.querySelector(".header");
     container.appendChild(this.headerTitle());
     container.appendChild(this.headerSub());
@@ -31,6 +31,8 @@ export class ShowHandler {
 
     if (verify) {
       container.appendChild(this.headerUser());
+      const active = document.querySelector(".header__search--container");
+      active.classList.add("active");
     } else {
       container.appendChild(this.headerSignIn());
     }
