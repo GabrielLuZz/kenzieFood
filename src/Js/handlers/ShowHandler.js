@@ -16,8 +16,8 @@ export class ShowHandler{
             else if (product.descricao.toLowerCase().includes(texto)){
                 searchedProducts.push(product)
             }
-            return searchedProducts
         });
+        return searchedProducts
 
     }
 
