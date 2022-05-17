@@ -1,11 +1,11 @@
-import { UserService } from "../services/UserService.js";
+import { ProductService } from "../services/ProductService.js";
 
 export class AuthHandler {
   static async userVerify() {
     const token = localStorage.getItem("Token");
     let data = {};
     if (token !== null) {
-      data = await UserService.privateProducts(token);
+      data = await ProductService.getPrivateProducts(token);
     }
     if (data.message !== undefined) {
       return false;
