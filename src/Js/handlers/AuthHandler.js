@@ -1,8 +1,21 @@
-import { Authentication } from "../controllers/authController.js";
 import { UserService } from "../services/UserService.js";
+export class Authentication {
+  static async userVerify() {
+    const token = localStorage.getItem("Token");
+    let data = {};
+    if (token !== null) {
+      data = await Us.privateProducts(token);
+    }
+    if (data.message !== undefined) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
 
 const login = async (data) => {
-  const user = await UserService.login(data);
+  const user = await Api.login(data);
   if (user.error !== undefined) {
     return false;
   }
