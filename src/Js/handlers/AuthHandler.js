@@ -1,4 +1,5 @@
 import { ProductService } from "../services/ProductService.js";
+import { UserService } from "../services/UserService.js";
 
 export class AuthHandler {
   static async userVerify() {
@@ -23,7 +24,7 @@ export class AuthHandler {
   }
 
   static async register(data) {
-    const user = await UserService.register(data);
+    const user = await UserService.registerUser(data);
     if (user.id !== undefined) {
       localStorage.setItem("userId", user.id);
       return true;

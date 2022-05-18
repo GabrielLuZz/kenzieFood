@@ -12,7 +12,7 @@ export class UserService {
       .then((data) => data.json())
       .then((data) => data)
       .catch((error) => error);
-
+      console.log(response);
     return response;
   }
 

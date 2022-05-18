@@ -115,7 +115,7 @@ html, body{
     border-radius: 8px;
 }
 
-.form_email:focus, .form_senha:hover, .form_nome:hover{
+.form_email:focus, .form_senha:focus, .form_nome:focus{
       background-color: var(--background-page);
       height: 45px;
       border: none;

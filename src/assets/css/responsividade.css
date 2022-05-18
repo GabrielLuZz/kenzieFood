@@ -65,7 +65,7 @@
         height: 60px;
     }
 
-    .form_email:hover, .form_senha:hover, .form_nome:hover{
+    .form_email:focus, .form_senha:focus, .form_nome:focus{
         height: 70px;
     }
 
