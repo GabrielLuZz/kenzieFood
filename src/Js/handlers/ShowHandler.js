@@ -130,7 +130,8 @@ export class ShowHandler {
         return list;
     }
 
-    static async showProductsDashboard(){
+    static async showProductsDashboard(verify){
+        if(verify == true){
         let list = await ProductService.getPrivateProducts(localStorage.getItem("Token"));
         let ul = document.getElementById("list__product");
 
@@ -157,6 +158,8 @@ export class ShowHandler {
                 <button class="remove">remove</button>
             </section>
             </section>`
+            ul.appendChild(li);
         })
+    }
     }
 }
