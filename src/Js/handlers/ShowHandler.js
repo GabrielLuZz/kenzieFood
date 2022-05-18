@@ -4,14 +4,14 @@ export class ShowHandler {
     static filterPerCategory(products, category) {
 
         if(category === 'Todos'){
-            return ShowHandler.showProducts(products)
+            return products
         }
 
         const filterProducts = products.filter(
             (product) => product.categoria.toLowerCase() === category.toLowerCase()
         );
         
-        return this.showProducts(filterProducts);
+        return filterProducts;
     }
 
     static searchedProducts(text, products) {
@@ -25,7 +25,7 @@ export class ShowHandler {
                 searchedProducts.push(product);
             }
         });
-        return this.showProducts(searchedProducts);
+        return searchedProducts;
     }
 
     static headerMain(verify) {
@@ -77,7 +77,7 @@ export class ShowHandler {
         headerPlace.appendChild(header)
     }
 
-    static async showProducts(products) {
+    static async showProducts(products, verify) {
 
         const showcase = document.querySelector('.showcase');
         showcase.innerText = '';

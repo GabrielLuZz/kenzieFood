@@ -7,15 +7,17 @@ let menuFilters = document.querySelectorAll('.menu__item')
 ShowHandler.headerMain(verify)
 const products = await ShowHandler.getProducts(verify);
 
-ShowHandler.showProducts(products)
+ShowHandler.showProducts(products,verify)
+
+
 
 
 
 menuFilters.forEach((filter) => {
     filter.addEventListener('click', (e) => {
-        e.preventDefault()
         let category = filter.innerText        
-        ShowHandler.filterPerCategory(products,category)        
+        const arrFiltered = ShowHandler.filterPerCategory(products,category)
+        ShowHandler.showProducts(arrFiltered,verify)        
     })
 })
 
@@ -23,5 +25,6 @@ let searchBar = document.querySelector(".rightSide__field")
 
 searchBar.addEventListener('keyup', (e) => {
     let text = searchBar.value
-    ShowHandler.searchedProducts(text,products)    
+    const arrSearched = ShowHandler.searchedProducts(text,products)    
+    ShowHandler.showProducts(arrSearched,verify)
 })
