@@ -140,7 +140,7 @@ export class ShowHandler {
             li.innerHTML =` <section class="content__product" >
             <img src=${element.imagem} alt="" class="img__product">
             <h2 class="name__product">${element.nome}</h2>`
-            let section = document.createElement("section");
+            let section = document.createElement("section") ;
             section.className="categories";
             element.product.categoria.forEach((element)=>{
                 let categoria = document.createElement("h3")
