@@ -2,31 +2,26 @@ import { UserService } from '../services/UserService.js'
 import { FormHandler } from '../handlers/FormHandler.js'
 import { AuthHandler } from '../handlers/AuthHandler.js';
 
-const initModal = (modalId)=>{
-  const modal = document.getElementById(modalId);
-  modal.classList.add("mostrar");
-}
 
 const goRegister = document.getElementById("optionRegister");
-goRegister.addEventListener("click", ()=> {initModal("modal_cadastro")});
+goRegister.addEventListener("click", ()=> {
+    const modal = document.getElementById("modal_cadastro");
+    modal.classList.add("mostrar");
+});
 
-const closeModal = (modalId)=>{
-    const modal = document.getElementById(modalId);
-    modal.classList.remove("mostrar");
-}
 
 const closeModalButton = document.getElementById("fechar_modal");
-closeModalButton.addEventListener("click", ()=>{closeModal("modal_cadastro")});
-
-
-const toHome = ()=>{
-    localStorage.clear();
-    window.location.href = "http://127.0.0.1:5500/index.html";
-}
-
+closeModalButton.addEventListener("click", ()=>{
+    const modal = document.getElementById("modal_cadastro");
+    modal.classList.remove("mostrar");
+});
 
 const buttonGoHome = document.getElementById("goHome");
-buttonGoHome.addEventListener("click", toHome);
+buttonGoHome.addEventListener("click", ()=>{
+    localStorage.clear();
+    window.location.href = "http://127.0.0.1:5500/index.html";
+});
+
 
 const formLogin = document.getElementById("form_Login");
 const form = document.getElementById("form_Cadastro");
