@@ -137,7 +137,7 @@ export class ShowHandler {
         list.forEach((element)=>{
             let li = document.createElement("li");
 
-            li.innerHTML =` <section class="content__product">
+            li.innerHTML =` <section class="content__product" >
             <img src=${element.imagem} alt="" class="img__product">
             <h2 class="name__product">${element.nome}</h2>`
             let section = document.createElement("section");
