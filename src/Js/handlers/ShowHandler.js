@@ -129,4 +129,34 @@ export class ShowHandler {
 
         return list;
     }
+
+    static async showProductsDashboard(){
+        let list = await ProductService.getPrivateProducts(localStorage.getItem("Token"));
+        let ul = document.getElementById("list__product");
+
+        list.forEach((element)=>{
+            let li = document.createElement("li");
+
+            li.innerHTML =` <section class="content__product">
+            <img src=${element.imagem} alt="" class="img__product">
+            <h2 class="name__product">${element.nome}</h2>`
+            let section = document.createElement("section");
+            section.className="categories";
+            element.product.categoria.forEach((element)=>{
+                let categoria = document.createElement("h3")
+                categoria.className = "categories__name";
+                categoria.innerText = element;
+                section.appendChild(categoria);
+            })
+            li.appendChild(section);
+            li.innerHTML += `<section class="description">
+                    <p class="description__text">${element.descricao}</p>  
+            </section>
+            <section class="actions">
+                <button class="edit">edit</button>
+                <button class="remove">remove</button>
+            </section>
+            </section>`
+        })
+    }
 }
