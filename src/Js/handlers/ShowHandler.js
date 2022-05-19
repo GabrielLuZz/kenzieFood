@@ -56,7 +56,7 @@ export class ShowHandler {
         rightSide.classList.add('rightSide');
         rightSide__search.classList.add('rightSide__search');
         rightSide__icon.classList.add('rightSide__icon');
-        rightSide__icon.innerHTML = '<img src="src/assets/images/search.png" alt="search icon">';
+        rightSide__icon.innerHTML = `<img src="${this.page === 'Home' ? './src/assets/images/search.png' : '../assets/images/search.png'}" alt="search icon">`;
         rightSide__field.classList.add('rightSide__field');
         rightSide__field.placeholder = 'Pesquisar por produto';
 
@@ -86,7 +86,7 @@ export class ShowHandler {
 
             rightSide__photo.classList.add('rightSide__photo');
             rightSide__photo.alt = 'profile photo';
-            rightSide__photo.src = 'src/assets/images/profile.png';
+            rightSide__photo.src = `${this.page === 'Home' ? 'src/assets/images/profile.png' : '../assets/images/profile.png'}`;
             menuProfile.classList.add('menuProfile');
             menuProfile__topSide.classList.add('menuProfile__topSide');
             menuProfile__user.classList.add('menuProfile__user');
