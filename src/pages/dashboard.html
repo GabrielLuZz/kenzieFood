@@ -7,11 +7,160 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/auth.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
 </head>
 
 <body>
+    <header class="headerAuth">
+        <h1 class="logo">Kenzie</h1>
+        <h2 class="logo logo_food" >Food</h2>
+        <button class="goHome" id="goHome">Home</button>
+    </header>
 
+    <div class="header">
+
+    </div>
+
+    <section class="mainAside">
+        <main>
+            <div class="container">
+                <nav class="menu">
+                    <ul class="menu__list">
+                        <li class="menu__item menu__item--all">
+                            <h2 class="menu__title">Todos</h2>
+                        </li>
+                        <li class="menu__item menu__item--bakery">
+                            <span class="menu__icon"><img src="../assets/images/bread.png" alt=""></span>
+                            <h2 class="menu__title">Panificadora</h2>
+                        </li>
+                        <li class="menu__item menu__item--fruits">
+                            <span class="menu__icon"><img src="../assets/images/fruits.png" alt=""></span>
+                            <h2 class="menu__title">Frutas</h2>
+                        </li>
+                        <li class="menu__item menu__item--drinks">
+                            <span class="menu__icon"><img src="../assets/images/drink.png" alt=""></span>
+                            <h2 class="menu__title">Bebidas</h2>
+                        </li>
+                    </ul>
+                </nav>
+                </div>
+
+                <section class="show__products">
+
+                    <section class="titles">
+                        <h2 class="titles__info__product subtitle">Produto</h2>
+                        <h2 class="titles__info__categories subtitle">Categorias</h2>
+                        <h2 class="titles__info__description subtitle">Descrição</h2>
+                        <h2 class="titles__info__action subtitle">Ações</h2>
+                    </section>
+
+                     <ul class="list__product" id="list__product">
+                          <li class="product" id="product">
+                              <section class="content__product">
+                                     <img src="../assets/images/pancake.png" alt="" class="img__product">
+                                     <h2 class="name__product subtitle">Panqueca de creme de avelã</h2>
+                                     <section class="categories">
+                                         <h3 class="categories__name subtitle">Bebidas</h3>
+                                         <h3 class="categories__name subtitle">Frutas</h3>
+                                     </section>
+                                     <section class="description" id="description">
+                                             <p class="description__text subtitle" >Essa será a descrição do produto</p>  
+                                     </section>
+                                     <section class="actions">
+                                         <button class="edit"><img src="../assets/images/Text.png" alt="edit" class="edit" id="edit"></button>
+                                         <button class="remove" ><img src="../assets/images/trash.png" alt="lixeira" class="remove" id="remove"></button>
+                                     </section>
+                              </section>
+                          </li>
+                     </ul>
+                </section>
+            </div>
+        </main>
+    </section>
+
+    <div id="modal__product" class="modal_container">
+        <div class="modal">
+            <button class="fechar_modal" id="fechar_modal"> X</button>
+            <h3 class="title__modal subtitle">Cadastro de produto</h3>
+            <form action="" class="form_Cadastro" id="form_Modal">
+                <h3 class="nomeInput subtitle">Nome:</h3>
+                <input type="text" class="form_nome" id="name_Product" name="name" placeholder="  Digite o nome do produto">
+                <h3 class="nomeInput subtitle">Descrição: </h3>
+                <input type="text" class="form_email" id="description_Modal" name="email" placeholder="  Adicione uma descrição">
+            </form>
+
+            <div class="categories">
+                <h3 class="subtitle">Categorias:</h3>
+                <div class="botoesCat">
+                <button class="subtitle modal__categories">Panificadora</button>
+                <button class="subtitle modal__categories">Frutas</button>
+                <button class="subtitle modal__categories">Bebidas</button>
+                </div>
+            </div>
+
+            <form action="" class="form_Cadastro" id="form_Modal">
+                <h3 class="nomeInput subtitle">Valor:</h3>
+                <input type="text" class="form_nome" id="prince_Product" name="prince" placeholder="  Digite o valor do produto">
+                <h3 class="nomeInput subtitle">Imagem:</h3>
+                <input type="text" class="form_email" id="img_Modal" name="srcImg" placeholder="  Insira um link de imagem">
+            </form>
+
+            <input type="submit" value="Cadastrar Produto" class="form_botaoLogin">
+        </div>
+    </div>
+
+    <div id="modal__edit--product" class="modal_container">
+        <div class="modal">
+            <button class="fechar_modal" id="fechar_modal--edit"> X</button>
+            <h3 class="title__modal subtitle">Edição do produto</h3>
+            <form action="" class="form_Cadastro" id="form_Modal">
+                <h3 class="nomeInput subtitle">Nome:</h3>
+                <input type="text" class="form_nome" id="name_Product" name="name" placeholder="  Digite o nome do produto">
+                <h3 class="nomeInput subtitle">Descrição:</h3>
+                <input type="text" class="form_email" id="description_Modal" name="email" placeholder="  Digite a descrição">
+            </form>
+
+            <div class="categories">
+                <h3 class="subtitle">Categorias</h3>
+                <div class="botoesCat">
+                <button class="subtitle modal__categories">Panificadora</button>
+                <button class="subtitle modal__categories">Frutas</button>
+                <button class="subtitle modal__categories">Bebidas</button>
+                </div>
+            </div>
+
+            <form action="" class="form_Cadastro" id="form_Modal">
+                <h3 class="nomeInput subtitle">Valor:</h3>
+                <input type="text" class="form_nome" id="prince_Product" name="prince" placeholder="  Digite o valor do produto">
+                <h3 class="nomeInput subtitle">Imagem:</h3>
+                <input type="text" class="form_email" id="img_Modal" name="srcImg" placeholder="  Inserira um link de imagem">
+            </form>
+
+            <div class="buttons__modal--edit">
+            <input type="submit" value="Excluir" class="modal__categories">
+            <input type="submit" value="Salvar alterações" class="form_botaoLogin">
+            </div>
+        </div>
+    </div>
+
+    <div id="modal__remove--product" class="modal_container">
+        <div class="modal modal__deletar">
+            <button class="fechar_modal" id="fechar_modal--remove"> X</button>
+            <h3 class="subtitle">Cadastro de produto</h3>
+
+            <h3 class="confirm subtitle">Tem certeza que deseja excluir este produto?</h3>
+            <div class="botoesCat">
+            <button class="subtitle alternative__button">Sim</button>
+            <button class="subtitle alternative__button">Não</button>
+            </div>
+        </div>
+    </div>
+
+<div class="buttonAddProduct">
+    <button class="optionRegisterModal" id="optionAddProduct">Adicionar produto</button>
+</div>
+    
 
     <script type="module" src="../Js/controllers/dashboardController.js"></script>
 </body>
