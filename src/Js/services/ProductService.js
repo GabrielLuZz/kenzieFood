@@ -41,8 +41,6 @@ export class ProductService {
   }
 
   static async editProduct(token, data, id) {
-    console.log(id);
-
     const response = await fetch(`${this.baseUrl}/my/products/${id}`, {
       method: "PATCH",
       headers: {
