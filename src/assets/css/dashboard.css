@@ -39,10 +39,12 @@ body {
     position: absolute;
     top: 73px;
     right: 12px;
-    background: rgba(0, 0, 0, 0.6);
+    background: #fff;
     border-radius: 11px;
     animation-name: entrar;
     animation-duration: 1s;
+    z-index: 99;
+    border: 3px solid #F8F9FA;
 }
 
 .warning__status {
@@ -83,7 +85,7 @@ body {
     padding: 0px 28px;
     font-weight: 400;
     font-size: 14px;
-    color: var(--first-color);
+    color: #212529;
 }
 
 .warning__bar {
@@ -473,16 +475,17 @@ aside {
     z-index: 2;
 }
 
-
-.modal__container, .modal__container--remove{
+.modal__container,
+.modal__container--remove {
     display: none;
 }
 
-.modal__container.show, .modal__container--remove.show{
-  display: flex;
+.modal__container.show,
+.modal__container--remove.show {
+    display: flex;
 }
 
-.modal__remove{
+.modal__remove {
     width: 97%;
     max-width: 580px;
     height: 300px;
@@ -492,20 +495,20 @@ aside {
     border-radius: 8px;
 }
 
-.body__modal--remove{
+.body__modal--remove {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.buttons__modal--remove{
+.buttons__modal--remove {
     display: flex;
     margin-top: 60px;
     width: 100%;
     justify-content: space-evenly;
 }
 
-.modal__title--remove{
+.modal__title--remove {
     margin-top: 50px;
     font-family: 'Poppins';
     font-style: normal;
@@ -516,22 +519,19 @@ aside {
     color: #000000;
 }
 
-.modal__btn--remove{
+.modal__btn--remove {
     width: 40%;
     height: 50px;
     border-radius: 30px;
     background-color: #b6b7b7;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
     text-align: center;
-
     color: #84878a;
 }
-
 
 .modal {
     width: 90%;
@@ -543,7 +543,6 @@ aside {
     border-radius: 8px;
     overflow-x: hidden;
 }
-
 
 @keyframes modal {
     from {

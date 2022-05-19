@@ -1,5 +1,5 @@
 export class WarningHandler {
-    static showWarning(message) {
+    static showWarning(message, error = true) {
 
         // <div class="warning">
         //     <div class="warning__status">
@@ -17,6 +17,10 @@ export class WarningHandler {
         const warning__message = document.createElement('div');
         const warning__bar = document.createElement('div');
 
+        if (error) {
+            warning__bar.style.backgroundColor = '#FF2253';
+        }
+
         warning.classList.add('warning');
         warning__status.classList.add('warning__status');
         warning__title.classList.add('warning__title');
@@ -26,6 +30,10 @@ export class WarningHandler {
         warning__message.classList.add('warning__message');
         warning__message.innerText = message;
         warning__bar.classList.add('warning__bar');
+
+        warning__close.addEventListener('click', () => {
+            this.clearWarnings()
+        })
 
         warning.append(warning__status, warning__message, warning__bar);
         warning__status.append(warning__title, warning__close)
