@@ -158,10 +158,11 @@ export class DashBoardHandler {
       await ProductService.editProduct(token, newValues, productId);
       this.closeModal();
       this.listProductsinDashboard();
+    } else {
+      await ProductService.createProduct(token, newValues);
+      this.closeModal();
+      this.listProductsinDashboard();
     }
-    await ProductService.createProduct(token, newValues);
-    this.closeModal();
-    this.listProductsinDashboard();
   }
 
   static changeTag(event, tags) {
