@@ -6,14 +6,14 @@ import { AuthHandler } from '../handlers/AuthHandler.js';
 const goRegister = document.getElementById("optionRegister");
 goRegister.addEventListener("click", () => {
     const modal = document.getElementById("modal_cadastro");
-    modal.classList.add("mostrar");
+    modal.classList.add("show");
 });
 
 
 const closeModalButton = document.getElementById("fechar_modal");
 closeModalButton.addEventListener("click", () => {
     const modal = document.getElementById("modal_cadastro");
-    modal.classList.remove("mostrar");
+    modal.classList.remove("show");
 });
 
 
