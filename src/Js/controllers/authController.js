@@ -4,49 +4,42 @@ import { AuthHandler } from '../handlers/AuthHandler.js';
 
 
 const goRegister = document.getElementById("optionRegister");
-goRegister.addEventListener("click", ()=> {
+goRegister.addEventListener("click", () => {
     const modal = document.getElementById("modal_cadastro");
     modal.classList.add("mostrar");
 });
 
 
 const closeModalButton = document.getElementById("fechar_modal");
-closeModalButton.addEventListener("click", ()=>{
+closeModalButton.addEventListener("click", () => {
     const modal = document.getElementById("modal_cadastro");
     modal.classList.remove("mostrar");
-});
-
-const buttonGoHome = document.getElementById("goHome");
-buttonGoHome.addEventListener("click", ()=>{
-    localStorage.clear();
-    window.location.href = "http://127.0.0.1:5500/index.html";
 });
 
 
 const formLogin = document.getElementById("form_Login");
 const form = document.getElementById("form_Cadastro");
 
-form.addEventListener("submit", async (event)=>{
+form.addEventListener("submit", async(event) => {
     event.preventDefault();
     const data = FormHandler.receiveData(event);
 
-    if(await AuthHandler.register(data)){
+    if (await AuthHandler.register(data)) {
         alert("Cadastrado com sucesso");
-        window.location.href = "http://127.0.0.1:5500/index.html"
-    }else{
+        window.location.href = "../../index.html"
+    } else {
         alert("Usuário já existente!")
     }
 });
 
-formLogin.addEventListener("submit", async (event)=>{
-   event.preventDefault();
-   const dados = FormHandler.receiveData(event); 
-   
-   if(await AuthHandler.login(dados)){
-    window.location.href = "http://127.0.0.1:5500/index.html"
-   }else{
-    alert("Email e/ou senha incorretos!")
-   }
+formLogin.addEventListener("submit", async(event) => {
+    event.preventDefault();
+    const dados = FormHandler.receiveData(event);
+
+    if (await AuthHandler.login(dados)) {
+        window.location.href = "../../index.html"
+
+    } else {
+        alert("Email e/ou senha incorretos!")
+    }
 });
-
-

@@ -23,16 +23,23 @@ export class AuthHandler {
             return false;
         }
         localStorage.setItem("Token", user);
+
         return true;
     }
 
     static async register(data) {
-        const user = await UserService.registerUser(data);
+        const user = await UserService.register(data);
         if (user.id !== undefined) {
             localStorage.setItem("userId", user.id);
             return true;
         }
         return false;
+    }
+
+    static async logout() {
+
+        localStorage.removeItem('Token');
+
 
     }
 }
