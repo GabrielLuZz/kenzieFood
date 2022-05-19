@@ -1,4 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Nunito:wght@700&family=Poppins:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Nunito:wght@400;700&family=Poppins:wght@400;500;700&display=swap');
+@keyframes entrar {
+    0% {
+        transform: translate(500px);
+    }
+    25% {
+        transform: translate(0px);
+    }
+    75% {
+        transform: translate(100px);
+    }
+    100% {
+        transform: translate(0px);
+    }
+}
+
 :root {
     --first-color: #212529;
     --second-color: #FF2253;
@@ -16,6 +31,7 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+
 ::-webkit-scrollbar-track {
     background-color: #ffffff;
 }
@@ -25,6 +41,71 @@ body {
 }
 ::-webkit-scrollbar-thumb {
     background: #c7c7c7;
+
+.warning {
+    display: flex;
+    flex-direction: column;
+    width: 275px;
+    height: 152px;
+    position: absolute;
+    top: 73px;
+    right: 12px;
+    background: #fff;
+    border-radius: 11px;
+    animation-name: entrar;
+    animation-duration: 1s;
+    z-index: 99;
+    border: 3px solid #F8F9FA;
+}
+
+.warning__status {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 28px;
+    width: 100%;
+    background: #F8F9FA;
+    border-radius: 8px 8px 0px 0px;
+}
+
+.warning__title {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.warning__close {
+    width: 31px;
+    height: 30px;
+    background: #E9ECEF;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Nunito';
+    font-weight: 400;
+    font-size: 14px;
+    color: #868E96;
+}
+
+.warning__message {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 0px 28px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #212529;
+}
+
+.warning__bar {
+    width: 100%;
+    height: 8px;
+    background: #39DF8F;
+    border-radius: 0px 0px 8px 8px;
+    transition: width 6s linear;
+
 }
 
 .container {
@@ -232,8 +313,7 @@ main {
 }
 
 .menu__item--all {
-    background-color: var(--second-color);
-    border: 1.5px solid var(--second-color);
+    background-color: #7b72a4;
 }
 
 .menu__item--bakery {
@@ -249,6 +329,11 @@ main {
 .menu__item--drinks {
     background-color: var(--drinks);
     border: 1.5px solid var(--drinks)
+}
+
+.menu__item--selected {
+    background-color: var(--second-color);
+    border: 1.5px solid var(--second-color);
 }
 
 .menu__icon {
@@ -402,15 +487,17 @@ aside {
     z-index: 2;
 }
 
-.modal__container, .modal__container--remove{
+.modal__container,
+.modal__container--remove {
     display: none;
 }
 
-.modal__container.show, .modal__container--remove.show{
+.modal__container.show,
+.modal__container--remove.show {
     display: flex;
 }
 
-.modal__remove{
+.modal__remove {
     width: 97%;
     max-width: 580px;
     height: 300px;
@@ -420,20 +507,20 @@ aside {
     border-radius: 8px;
 }
 
-.body__modal--remove{
+.body__modal--remove {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.buttons__modal--remove{
+.buttons__modal--remove {
     display: flex;
     margin-top: 60px;
     width: 100%;
     justify-content: space-evenly;
 }
 
-.modal__title--remove{
+.modal__title--remove {
     margin-top: 50px;
     font-family: 'Poppins';
     font-style: normal;
@@ -444,25 +531,23 @@ aside {
     color: #000000;
 }
 
-.modal__btn--remove{
+.modal__btn--remove {
     width: 40%;
     height: 50px;
     border-radius: 30px;
     background-color: #b6b7b7;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
     text-align: center;
-
     color: #84878a;
 }
 
 .modal {
-    width: 97%;
-    max-width: 580px;
+    width: 90%;
+    max-width: 472px;
     height: 600px;
     display: flex;
     flex-direction: column;
@@ -472,11 +557,11 @@ aside {
 }
 
 @keyframes modal {
-    from{
+    from {
         opacity: 0;
         transform: translate3d(0, -100px, 0);
     }
-    to{
+    to {
         opacity: 1;
         transform: translate3d(0, 0, 0);
     }
@@ -599,7 +684,7 @@ aside {
 }
 
 .modal__btn {
-    padding: 15px 20px;
+    padding: 26px 20px;
     width: 50%;
     display: flex;
     justify-content: center;
@@ -624,7 +709,7 @@ aside {
 }
 
 .open {
-    width: 90%;
+    width: 100%;
     height: 60px;
     background: var(--second-color);
     display: flex;
@@ -658,6 +743,10 @@ aside {
 }
 
 @media (min-width: 680px) {
+    .warning {
+        width: 496px;
+        height: 174px;
+    }
     header {
         box-shadow: 0px 0px 40px -18px rgba(0, 0, 0, .5);
     }
@@ -694,7 +783,6 @@ aside {
     .menuProfile {
         top: 88px;
     }
-
     aside {
         position: fixed;
         top: 0;
@@ -707,15 +795,12 @@ aside {
         transition: all ease .8s;
         z-index: 2;
     }
-    
-    .modal__container{
+    .modal__container {
         display: none;
     }
-    
-    .modal__container.show{
+    .modal__container.show {
         display: flex;
     }
-    
     .modal {
         width: 100%;
         max-width: 580px;
@@ -725,22 +810,19 @@ aside {
         background-color: #fff;
         border-radius: 8px;
     }
-    
     @keyframes modal {
-        from{
+        from {
             opacity: 0;
             transform: translate3d(0, -100px, 0);
         }
-        to{
+        to {
             opacity: 1;
             transform: translate3d(0, 0, 0);
         }
     }
-    
     .show .modal {
         animation: modal .9s;
     }
-    
     .modal__head {
         display: flex;
         width: 100%;
@@ -751,24 +833,20 @@ aside {
         background: #F8F9FA;
         border-radius: 8px 8px 0px 0px;
     }
-    
     .modal__title {
         font-weight: 500;
         font-size: 14px;
     }
-    
     .modal__close {
         width: 31px;
         height: 30px;
         background: #E9ECEF;
         border-radius: 4px;
     }
-    
     .modal__body {
         padding: 22px 28px 0px;
         flex: 1;
     }
-    
     .modal__form {
         width: 100%;
         display: flex;
@@ -776,14 +854,12 @@ aside {
         justify-content: space-between;
         height: 100%;
     }
-    
     .modal__label {
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 11px;
         justify-content: center;
     }
-    
     .modal__category {
         margin-bottom: 16px;
         font-family: 'Inter';
@@ -792,7 +868,6 @@ aside {
         color: #212529;
         width: 100%;
     }
-    
     .modal__field {
         width: 100%;
         background: #F8F9FA;
@@ -803,24 +878,20 @@ aside {
         font-size: 16px;
         color: #868E96;
     }
-    
     .modal__field::placeholder {
         font-family: 'Inter';
         font-weight: 400;
         font-size: 16px;
         color: #868E96;
     }
-    
     .modal__field--input {
         padding: 26px 2px 26px 20px;
         height: 52px;
     }
-    
     .modal__field--textarea {
         padding: 12px 20px 20px;
         min-height: 100px;
     }
-    
     .modal__field--radio {
         padding: 15px 20px;
         border: 1.5px solid #F8F9FA;
@@ -832,17 +903,14 @@ aside {
         margin-bottom: 10px;
         margin-right: 12px;
     }
-    
     .modal__field--gray {
         background: #F8F9FA;
         color: #868E96;
     }
-    
     .modal__field--salmon {
         background-color: var(--second-color);
         color: #fff;
     }
-    
     .modal__foot {
         border-radius: 0px 0px 8px 8px;
         height: 90px;
@@ -852,7 +920,6 @@ aside {
         padding-left: 28px;
         padding-right: 7px;
     }
-    
     .modal__btn {
         padding: 15px 20px;
         width: 50%;
@@ -864,13 +931,11 @@ aside {
         font-weight: 500;
         font-size: 16px;
     }
-    
     .modal__btn--gray {
         background: #F8F9FA;
         border: 1.5px solid #F8F9FA;
         color: #868E96;
     }
-    
     .modal__btn--salmon {
         background: #FF2253;
         border: 1.5px solid #FF2253;
@@ -879,6 +944,11 @@ aside {
 }
 
 @media (min-width: 1000px) {
+    .warning {
+        top: unset;
+        bottom: 29px;
+        right: 28px;
+    }
     .showcase {
         gap: 31px;
     }

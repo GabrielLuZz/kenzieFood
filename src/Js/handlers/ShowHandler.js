@@ -65,16 +65,6 @@ export class ShowHandler {
         leftSide.appendChild(leftSide__title);
         rightSide.append(rightSide__search)
 
-        // <nav class="menuProfile">
-        //     <div class="menuProfile__topSide">
-        //         <span class="menuProfile__user">Time A</span>
-        //     </div>
-        //     <div class="menuProfile__bottomSide">
-        //         <button class="menuProfile__btn">Dashboard</button>
-        //         <button class="menuProfile__btn">Logout</button>
-        //     </div>
-        // </nav>
-
         if (verify) {
             const rightSide__photo = document.createElement('img');
             const menuProfile = document.createElement('nav');
@@ -162,24 +152,6 @@ export class ShowHandler {
             const card__price = document.createElement('span');
             const card__btn = document.createElement('button');
 
-            // <article class="card">
-            //     <section class="card__image">
-            //         <img src="src/assets/images/pancake.png" alt="">
-            //     </section>
-            //     <section class="card__info">
-            //         <h3 class="card__title">Panqueca de banana com aveia</h3>
-            //         <p class="card__description">Esta receita serve muito bem 2 pessoas, deixa a gente bem satisfeito, se não tiver outra opção de café. Se tiver mais comida, como pães e frutas.</p>
-            //         <div class="card__categories">
-            //             <span class="card__category">Panificadora</span>
-            //             <span class="card__category">Frutas</span>
-            //         </div>
-            //         <div class="card__end">
-            //             <span class="card__price">R$ 20,00</span>
-            //             <button class="card__btn"><img src="src/assets/images/littleCart.png" alt=""></button>
-            //         </div>
-            //     </section>
-            // </article>
-
             card.classList.add('card');
             card__image.classList.add('card__image');
             img.src = product.imagem;
@@ -232,5 +204,11 @@ export class ShowHandler {
         const menuProfile = document.querySelector('.menuProfile');
 
         menuProfile.classList.toggle('openElementWithFlex');
+    }
+
+    static changeTheSelected(category) {
+        document.querySelectorAll('.menu__item').forEach(item => item.classList.remove('menu__item--selected'));
+
+        category.classList.add('menu__item--selected')
     }
 }
