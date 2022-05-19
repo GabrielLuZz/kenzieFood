@@ -1,4 +1,3 @@
-
 import { ProductService } from "../services/ProductService.js";
 
 export class DashBoardHandler {
@@ -12,11 +11,9 @@ export class DashBoardHandler {
         modal.classList.remove("mostrar");
     }
 
-    static async listProductsinDashboard() {
+    static listProductsinDashboard(privateProducts) {
         const mainBody = document.querySelector('.body');
         mainBody.innerText = '';
-
-        const privateProducts = await ProductService.getPrivateProducts(localStorage.getItem('Token'));
 
         privateProducts.forEach(product => {
             const card = document.createElement('article');
@@ -71,4 +68,3 @@ export class DashBoardHandler {
         })
     }
 }
-

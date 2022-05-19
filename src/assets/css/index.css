@@ -213,8 +213,7 @@ main {
 }
 
 .menu__item--all {
-    background-color: var(--second-color);
-    border: 1.5px solid var(--second-color);
+    background-color: #7b72a4;
 }
 
 .menu__item--bakery {
@@ -230,6 +229,11 @@ main {
 .menu__item--drinks {
     background-color: var(--drinks);
     border: 1.5px solid var(--drinks)
+}
+
+.menu__item--selected {
+    background-color: var(--second-color);
+    border: 1.5px solid var(--second-color);
 }
 
 .menu__icon {
