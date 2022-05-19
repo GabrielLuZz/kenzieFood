@@ -7,160 +7,147 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
-    <link rel="stylesheet" href="../assets/css/auth.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
 </head>
 
 <body>
-    <header class="headerAuth">
-        <h1 class="logo">Kenzie</h1>
-        <h2 class="logo logo_food" >Food</h2>
-        <button class="goHome" id="goHome">Home</button>
-    </header>
 
     <div class="header">
 
     </div>
 
     <section class="mainAside">
+
         <main>
-            <div class="container">
+            <div class="container container--main">
                 <nav class="menu">
                     <ul class="menu__list">
                         <li class="menu__item menu__item--all">
                             <h2 class="menu__title">Todos</h2>
                         </li>
                         <li class="menu__item menu__item--bakery">
-                            <span class="menu__icon"><img src="../assets/images/bread.png" alt=""></span>
+                            <span class="menu__icon"><img src="src/assets/images/bread.png" alt=""></span>
                             <h2 class="menu__title">Panificadora</h2>
                         </li>
                         <li class="menu__item menu__item--fruits">
-                            <span class="menu__icon"><img src="../assets/images/fruits.png" alt=""></span>
+                            <span class="menu__icon"><img src="src/assets/images/fruits.png" alt=""></span>
                             <h2 class="menu__title">Frutas</h2>
                         </li>
                         <li class="menu__item menu__item--drinks">
-                            <span class="menu__icon"><img src="../assets/images/drink.png" alt=""></span>
+                            <span class="menu__icon"><img src="src/assets/images/drink.png" alt=""></span>
                             <h2 class="menu__title">Bebidas</h2>
                         </li>
                     </ul>
                 </nav>
-                </div>
-
-                <section class="show__products">
-
-                    <section class="titles">
-                        <h2 class="titles__info__product subtitle">Produto</h2>
-                        <h2 class="titles__info__categories subtitle">Categorias</h2>
-                        <h2 class="titles__info__description subtitle">Descrição</h2>
-                        <h2 class="titles__info__action subtitle">Ações</h2>
+                <section class="showcase">
+                    <section class="head">
+                        <div class="head__product">
+                            <h2 class="head__title">Produto</h2>
+                        </div>
+                        <div class="head__categories">
+                            <h2 class="head__title">Categorias</h2>
+                        </div>
+                        <div class="head__description">
+                            <h2 class="head__title">Descrição</h2>
+                        </div>
+                        <div class="head__actions">
+                            <h2 class="head__title">Ações</h2>
+                        </div>
                     </section>
 
-                     <ul class="list__product" id="list__product">
-                          <li class="product" id="product">
-                              <section class="content__product">
-                                     <img src="../assets/images/pancake.png" alt="" class="img__product">
-                                     <h2 class="name__product subtitle">Panqueca de creme de avelã</h2>
-                                     <section class="categories">
-                                         <h3 class="categories__name subtitle">Bebidas</h3>
-                                         <h3 class="categories__name subtitle">Frutas</h3>
-                                     </section>
-                                     <section class="description" id="description">
-                                             <p class="description__text subtitle" >Essa será a descrição do produto</p>  
-                                     </section>
-                                     <section class="actions">
-                                         <button class="edit"><img src="../assets/images/Text.png" alt="edit" class="edit" id="edit"></button>
-                                         <button class="remove" ><img src="../assets/images/trash.png" alt="lixeira" class="remove" id="remove"></button>
-                                     </section>
-                              </section>
-                          </li>
-                     </ul>
+                    <section class="body">
+                        <article class="card">
+                            <div class="card__product">
+                                <img class="card__image" src="../assets/images/pancake.png" alt="">
+                                <h3 class="card__title">Panqueca de banana com aveia </h3>
+                            </div>
+                            <div class="card__categories">
+                                <span class="card__category">Bebidas</span>
+                                <span class="card__category">Frutas</span>
+                            </div>
+                            <div class="card__description">
+                                <p class="card__text">Esta receita serve muito bem 2 pessoas...</p>
+                            </div>
+                            <div class="card__actions">
+                                <button class="card__btn card__btn--edit"><img src="../assets/images/edit.png" alt=""></button>
+                                <button class="card__btn card__btn--remove"><img src="../assets/images/trash.png" alt=""></button>
+                            </div>
+                        </article>
+
+                        <article class="card">
+                            <div class="card__product">
+                                <img class="card__image" src="../assets/images/pancake.png" alt="">
+                                <h3 class="card__title">Panqueca de banana com aveia </h3>
+                            </div>
+                            <div class="card__categories">
+                                <span class="card__category">Bebidas</span>
+                                <span class="card__category">Frutas</span>
+                            </div>
+                            <div class="card__description">
+                                <p class="card__text">Esta receita serve muito bem 2 pessoas...</p>
+                            </div>
+                            <div class="card__actions">
+                                <button class="card__btn card__btn--edit"><img src="../assets/images/edit.png" alt=""></button>
+                                <button class="card__btn card__btn--remove"><img src="../assets/images/trash.png" alt=""></button>
+                            </div>
+                        </article>
+                    </section>
                 </section>
             </div>
         </main>
+
+        <aside>
+            <section class="modal">
+                <section class="modal__head">
+                    <h2 class="modal__title">Cadastro de produto</h2>
+                    <button class="modal__close">X</button>
+                </section>
+                <section class="modal__body">
+                    <form class="modal__form" action="">
+                        <label class="modal__label">
+                            <div class="modal__category">Nome do Produto</div>
+                            <input class="modal__field modal__field--input" type="text" placeholder="Pizza Vegetariana de Brócolis" name="nome">
+                        </label>
+
+                        <label class="modal__label">
+                            <div class="modal__category">Descrição</div>
+                            <textarea class="modal__field modal__field--textarea" name="descricao" placeholder="Esse é um dos sabores de pizza mais pedidos por quem não come carne"></textarea>
+                        </label>
+
+                        <label class="modal__label">
+                            <div class="modal__category">Categorias</div>
+                            
+                            <span class="modal__field modal__field--radio modal__field--salmon" id="panificadora">Panificadora</span>
+                            <span class="modal__field modal__field--radio modal__field--gray" id="frutas">Frutas</span>
+                            <span class="modal__field modal__field--radio modal__field--gray" id="bebidas">Bebidas</span>
+                        </label>
+
+                        <label class="modal__label">
+                            <div class="modal__category">Valor do Produto</div>
+                            <input class="modal__field modal__field--input" type="number" name="preco" placeholder="50.00" ></input>
+                        </label>
+
+                        <label class="modal__label">
+                            <div class="modal__category">Link da imagem</div>
+                            <input class="modal__field modal__field--input" type="url" name="imagem" placeholder="https://images.unsplash.com/" ></input>
+                        </label>
+
+                    </form>
+                </section>
+                <section class="modal__foot">
+                    <button class="modal__btn modal__btn--gray">Excluir</button>
+                    <button class="modal__btn modal__btn--salmon">Salvar alterações</button>
+                </section>
+            </section>
+        </aside>
     </section>
 
-    <div id="modal__product" class="modal_container">
-        <div class="modal">
-            <button class="fechar_modal" id="fechar_modal"> X</button>
-            <h3 class="title__modal subtitle">Cadastro de produto</h3>
-            <form action="" class="form_Cadastro" id="form_Modal">
-                <h3 class="nomeInput subtitle">Nome:</h3>
-                <input type="text" class="form_nome" id="name_Product" name="name" placeholder="  Digite o nome do produto">
-                <h3 class="nomeInput subtitle">Descrição: </h3>
-                <input type="text" class="form_email" id="description_Modal" name="email" placeholder="  Adicione uma descrição">
-            </form>
+    <div class="container container--open">
+        <button class="open">Adicionar novo produto</button>
 
-            <div class="categories">
-                <h3 class="subtitle">Categorias:</h3>
-                <div class="botoesCat">
-                <button class="subtitle modal__categories">Panificadora</button>
-                <button class="subtitle modal__categories">Frutas</button>
-                <button class="subtitle modal__categories">Bebidas</button>
-                </div>
-            </div>
-
-            <form action="" class="form_Cadastro" id="form_Modal">
-                <h3 class="nomeInput subtitle">Valor:</h3>
-                <input type="text" class="form_nome" id="prince_Product" name="prince" placeholder="  Digite o valor do produto">
-                <h3 class="nomeInput subtitle">Imagem:</h3>
-                <input type="text" class="form_email" id="img_Modal" name="srcImg" placeholder="  Insira um link de imagem">
-            </form>
-
-            <input type="submit" value="Cadastrar Produto" class="form_botaoLogin">
-        </div>
     </div>
 
-    <div id="modal__edit--product" class="modal_container">
-        <div class="modal">
-            <button class="fechar_modal" id="fechar_modal--edit"> X</button>
-            <h3 class="title__modal subtitle">Edição do produto</h3>
-            <form action="" class="form_Cadastro" id="form_Modal">
-                <h3 class="nomeInput subtitle">Nome:</h3>
-                <input type="text" class="form_nome" id="name_Product" name="name" placeholder="  Digite o nome do produto">
-                <h3 class="nomeInput subtitle">Descrição:</h3>
-                <input type="text" class="form_email" id="description_Modal" name="email" placeholder="  Digite a descrição">
-            </form>
 
-            <div class="categories">
-                <h3 class="subtitle">Categorias</h3>
-                <div class="botoesCat">
-                <button class="subtitle modal__categories">Panificadora</button>
-                <button class="subtitle modal__categories">Frutas</button>
-                <button class="subtitle modal__categories">Bebidas</button>
-                </div>
-            </div>
-
-            <form action="" class="form_Cadastro" id="form_Modal">
-                <h3 class="nomeInput subtitle">Valor:</h3>
-                <input type="text" class="form_nome" id="prince_Product" name="prince" placeholder="  Digite o valor do produto">
-                <h3 class="nomeInput subtitle">Imagem:</h3>
-                <input type="text" class="form_email" id="img_Modal" name="srcImg" placeholder="  Inserira um link de imagem">
-            </form>
-
-            <div class="buttons__modal--edit">
-            <input type="submit" value="Excluir" class="modal__categories">
-            <input type="submit" value="Salvar alterações" class="form_botaoLogin">
-            </div>
-        </div>
-    </div>
-
-    <div id="modal__remove--product" class="modal_container">
-        <div class="modal modal__deletar">
-            <button class="fechar_modal" id="fechar_modal--remove"> X</button>
-            <h3 class="subtitle">Cadastro de produto</h3>
-
-            <h3 class="confirm subtitle">Tem certeza que deseja excluir este produto?</h3>
-            <div class="botoesCat">
-            <button class="subtitle alternative__button">Sim</button>
-            <button class="subtitle alternative__button">Não</button>
-            </div>
-        </div>
-    </div>
-
-<div class="buttonAddProduct">
-    <button class="optionRegisterModal" id="optionAddProduct">Adicionar produto</button>
-</div>
-    
 
     <script type="module" src="../Js/controllers/dashboardController.js"></script>
 </body>
