@@ -120,7 +120,7 @@ export class DashBoardHandler {
     const modal = document.querySelector(".modal__container");
     modal.style.display = "none";
   }
-  static sendModal(event) {
+  static async sendModal(event) {
     const productId = event.path[2].id;
     const main__event = event.path[2].childNodes[3].childNodes[1];
     const data__base = [...main__event];
@@ -137,13 +137,12 @@ export class DashBoardHandler {
       data__array.push(element.value);
     });
     let newValues = {
-      id: productId,
       nome: data__array[0],
       preco: data__array[2],
       categoria: newTag,
       descricao: data__array[1],
       imagem: data__array[3],
     };
-    return ProductService.editProduct(token, newValues, productId);
+    return await ProductService.editProduct(token, newValues, productId);
   }
 }
