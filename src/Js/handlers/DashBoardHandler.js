@@ -1,11 +1,14 @@
-export class Mostrar {
+export class DashboardHandler {
     static addClassList(id){
     const modal = document.getElementById(id);
-    modal.classList.add("mostrar");
+    modal.classList.add("show");
 }
 
     static removeClassList (id){
     const modal = document.getElementById(id);
-    modal.classList.remove("mostrar");
+    modal.classList.remove("show");
 }
 }
+
+
+

@@ -197,7 +197,7 @@ input:focus::-webkit-input-placeholder {
     align-items: center;
 }
 
-.modal_container.mostrar {
+.modal_container.show {
     display: flex;
 }
 
@@ -230,7 +230,7 @@ input:focus::-webkit-input-placeholder {
     }
 }
 
-.mostrar .modal {
+.show .modal {
     animation: modal .9s;
 }
 
