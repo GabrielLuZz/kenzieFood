@@ -88,21 +88,16 @@ export class DashBoardHandler {
       const productPrice = document.querySelector("#modal__price");
       const productImg = document.querySelector("#modal__image");
       const productContainer = document.querySelector(".modal");
+      const modalTitle = document.querySelector("#modal__title--main");
+      modalTitle.innerText = "Edição de Produtos";
       productContainer.id = product.id;
-
-      const productTagSelect = document.querySelector(
-        ".modal__field.modal__field--radio.modal__field--salmon"
-      );
-      productTagSelect.classList.replace(
-        "modal__field--salmon",
-        "modal__field--grey"
-      );
       const productTagAll = document.querySelectorAll(
         ".modal__field.modal__field--radio"
       );
       const productTag = [...productTagAll];
       const tagToLower = product.categoria.toLowerCase();
       productTag.forEach((element) => {
+        element.classList.remove("modal__field--salmon");
         if (element.id === tagToLower) {
           element.classList.add("modal__field--salmon");
         }
@@ -114,6 +109,20 @@ export class DashBoardHandler {
     } else if (btn__class === "card__btn--remove") {
       ProductService.deleteProduct(token, product.id);
       this.listProductsinDashboard();
+    } else {
+      const modalTitle = document.querySelector("#modal__title--main");
+      modalTitle.innerText = "Adicionar novo Produto";
+      const modal = document.querySelector(".modal__container");
+      modal.style.display = "flex";
+      const productName = document.querySelector("#modal__title");
+      const productDescription = document.querySelector("#modal__description");
+      const productPrice = document.querySelector("#modal__price");
+      const productImg = document.querySelector("#modal__image");
+
+      productImg.placeholder = "URL Da imagem do produto";
+      productPrice.value = 0;
+      productDescription.placeholder = "Adicione uma descrição do seu produto";
+      productName.placeholder = "Nome do Produto";
     }
   }
   static closeModal() {
@@ -143,6 +152,25 @@ export class DashBoardHandler {
       descricao: data__array[1],
       imagem: data__array[3],
     };
-    return await ProductService.editProduct(token, newValues, productId);
+    console.log(newValues);
+    const modalTitle = document.querySelector("#modal__title--main");
+    if (modalTitle.innerText === "Edição de Produtos") {
+      await ProductService.editProduct(token, newValues, productId);
+      this.closeModal();
+      this.listProductsinDashboard();
+    }
+    await ProductService.createProduct(token, newValues);
+    this.closeModal();
+    this.listProductsinDashboard();
+  }
+
+  static changeTag(event, tags) {
+    const target = event.target;
+    const newA = tags.forEach((element) => {
+      if (element.classList[3] === "modal__field--salmon") {
+        element.classList.remove("modal__field--salmon");
+      }
+      target.classList.add("modal__field--salmon");
+    });
   }
 }

@@ -28,3 +28,19 @@ modal__save.addEventListener("click", (event) => {
   event.preventDefault;
   DashBoardHandler.sendModal(event);
 });
+
+const productTagAll = document.querySelectorAll(
+  ".modal__field.modal__field--radio"
+);
+productTagAll.forEach((tag) => {
+  tag.addEventListener("click", (event) => {
+    event.preventDefault();
+    DashBoardHandler.changeTag(event, productTagAll);
+  });
+});
+
+const add__newProduct = document.querySelector(".open");
+add__newProduct.addEventListener("click", (event) => {
+  event.preventDefault();
+  DashBoardHandler.modalDashboard(event);
+});
