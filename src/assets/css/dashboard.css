@@ -31,6 +31,17 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+
+::-webkit-scrollbar-track {
+    background-color: #ffffff;
+}
+::-webkit-scrollbar {
+    width: 6px;
+    background: none;
+}
+::-webkit-scrollbar-thumb {
+    background: #c7c7c7;
+
 .warning {
     display: flex;
     flex-direction: column;
@@ -94,6 +105,7 @@ body {
     background: #39DF8F;
     border-radius: 0px 0px 8px 8px;
     transition: width 6s linear;
+
 }
 
 .container {
