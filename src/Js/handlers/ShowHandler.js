@@ -2,20 +2,26 @@ import { ProductService } from "../services/ProductService.js";
 
 export class ShowHandler {
     static filterPerCategory(products, category) {
+
+        if(category === 'Todos'){
+            return products
+        }
+
         const filterProducts = products.filter(
             (product) => product.categoria.toLowerCase() === category.toLowerCase()
         );
+        
         return filterProducts;
     }
 
-    static searchedProducts(texto, products) {
+    static searchedProducts(text, products) {
         const searchedProducts = [];
         products.forEach((product) => {
-            if (product.nome.toLowerCase().includes(texto)) {
+            if (product.nome.toLowerCase().includes(text)) {
                 searchedProducts.push(product);
-            } else if (product.categoria.toLowerCase().includes(texto)) {
+            } else if (product.categoria.toLowerCase().includes(text)) {
                 searchedProducts.push(product);
-            } else if (product.descricao.toLowerCase().includes(texto)) {
+            } else if (product.descricao.toLowerCase().includes(text)) {
                 searchedProducts.push(product);
             }
         });
@@ -71,7 +77,7 @@ export class ShowHandler {
         headerPlace.appendChild(header)
     }
 
-    static async showProducts(products) {
+    static async showProducts(products, verify) {
 
         const showcase = document.querySelector('.showcase');
         showcase.innerText = '';
