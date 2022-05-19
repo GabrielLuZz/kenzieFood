@@ -7,8 +7,6 @@ import { ProductService } from '../services/ProductService.js';
 import { WarningHandler } from '../handlers/WarningHandler.js';
 
 
-
-
 const verify = await AuthHandler.userVerify();
 
 if (verify) {

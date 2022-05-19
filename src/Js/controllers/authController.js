@@ -1,45 +1,61 @@
 import { UserService } from '../services/UserService.js'
 import { FormHandler } from '../handlers/FormHandler.js'
 import { AuthHandler } from '../handlers/AuthHandler.js';
+import { WarningHandler } from '../handlers/WarningHandler.js';
 
 
 const goRegister = document.getElementById("optionRegister");
+const closeModalButton = document.getElementById("fechar_modal");
+const formLogin = document.getElementById("form_Login");
+const form = document.getElementById("form_Cadastro");
+
+
 goRegister.addEventListener("click", () => {
     const modal = document.getElementById("modal_cadastro");
     modal.classList.add("show");
 });
 
 
-const closeModalButton = document.getElementById("fechar_modal");
+
 closeModalButton.addEventListener("click", () => {
     const modal = document.getElementById("modal_cadastro");
     modal.classList.remove("show");
 });
 
 
-const formLogin = document.getElementById("form_Login");
-const form = document.getElementById("form_Cadastro");
+const formCadastroHandler = new FormHandler(form);
+const formLoginHandler = new FormHandler(formLogin)
 
-form.addEventListener("submit", async(event) => {
-    event.preventDefault();
-    const data = FormHandler.receiveData(event);
+form.addEventListener('submit', async(e) => {
+    if (formCadastroHandler.handleSubmit(e)) {
+        const data = FormHandler.receiveData(e);
 
-    if (await AuthHandler.register(data)) {
-        alert("Cadastrado com sucesso");
-        window.location.href = "../../index.html"
-    } else {
-        alert("Usuário já existente!")
+        WarningHandler.clearWarnings()
+        if (await AuthHandler.register(data)) {
+            AuthHandler.login(data)
+            WarningHandler.showWarning('Usuário cadastrado com sucesso', false)
+
+            setTimeout(() => {
+                window.location.href = '../../index.html'
+            }, 2000)
+        } else {
+            WarningHandler.showWarning("Usuário já existente!")
+        }
+
     }
-});
+})
 
-formLogin.addEventListener("submit", async(event) => {
-    event.preventDefault();
-    const dados = FormHandler.receiveData(event);
+formLogin.addEventListener('submit', async(e) => {
+    if (formLoginHandler.handleSubmit(e)) {
+        const dados = FormHandler.receiveData(e);
 
-    if (await AuthHandler.login(dados)) {
-        window.location.href = "../../index.html"
+        WarningHandler.clearWarnings()
+        if (await AuthHandler.login(dados)) {
+            window.location.href = "../../index.html"
 
-    } else {
-        alert("Email e/ou senha incorretos!")
+        } else {
+            WarningHandler.showWarning("Email e/ou senha incorretos!")
+        }
+
     }
-});
+})

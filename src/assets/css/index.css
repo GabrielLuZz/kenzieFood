@@ -24,8 +24,12 @@ body {
     position: absolute;
     top: 73px;
     right: 12px;
-    background: rgba(0, 0, 0, 0.6);
+    background: #fff;
     border-radius: 11px;
+    animation-name: entrar;
+    animation-duration: 1s;
+    z-index: 99;
+    border: 3px solid #F8F9FA;
 }
 
 .warning__status {
@@ -66,7 +70,7 @@ body {
     padding: 0px 28px;
     font-weight: 400;
     font-size: 14px;
-    color: var(--first-color);
+    color: #212529;
 }
 
 .warning__bar {
@@ -74,6 +78,7 @@ body {
     height: 8px;
     background: #39DF8F;
     border-radius: 0px 0px 8px 8px;
+    transition: width 6s linear;
 }
 
 .container {
