@@ -1,45 +1,61 @@
 import { UserService } from '../services/UserService.js'
 import { FormHandler } from '../handlers/FormHandler.js'
 import { AuthHandler } from '../handlers/AuthHandler.js';
+import { WarningHandler } from '../handlers/WarningHandler.js';
 
 
 const goRegister = document.getElementById("optionRegister");
-goRegister.addEventListener("click", () => {
-    const modal = document.getElementById("modal_cadastro");
-    modal.classList.add("mostrar");
-});
-
-
 const closeModalButton = document.getElementById("fechar_modal");
-closeModalButton.addEventListener("click", () => {
-    const modal = document.getElementById("modal_cadastro");
-    modal.classList.remove("mostrar");
-});
-
-
 const formLogin = document.getElementById("form_Login");
 const form = document.getElementById("form_Cadastro");
 
-form.addEventListener("submit", async(event) => {
-    event.preventDefault();
-    const data = FormHandler.receiveData(event);
 
-    if (await AuthHandler.register(data)) {
-        alert("Cadastrado com sucesso");
-        window.location.href = "../../index.html"
-    } else {
-        alert("Usuário já existente!")
-    }
+goRegister.addEventListener("click", () => {
+    const modal = document.getElementById("modal_cadastro");
+    modal.classList.add("show");
 });
 
-formLogin.addEventListener("submit", async(event) => {
-    event.preventDefault();
-    const dados = FormHandler.receiveData(event);
 
-    if (await AuthHandler.login(dados)) {
-        window.location.href = "../../index.html"
 
-    } else {
-        alert("Email e/ou senha incorretos!")
-    }
+closeModalButton.addEventListener("click", () => {
+    const modal = document.getElementById("modal_cadastro");
+    modal.classList.remove("show");
 });
+
+
+const formCadastroHandler = new FormHandler(form);
+const formLoginHandler = new FormHandler(formLogin)
+
+form.addEventListener('submit', async(e) => {
+    if (formCadastroHandler.handleSubmit(e)) {
+        const data = FormHandler.receiveData(e);
+
+        WarningHandler.clearWarnings()
+        if (await AuthHandler.register(data)) {
+            AuthHandler.login(data)
+            WarningHandler.showWarning('Usuário cadastrado com sucesso', false)
+
+            setTimeout(() => {
+                window.location.href = '../../index.html'
+            }, 2000)
+        } else {
+            WarningHandler.showWarning("Usuário já existente!")
+        }
+
+    }
+})
+
+formLogin.addEventListener('submit', async(e) => {
+    if (formLoginHandler.handleSubmit(e)) {
+        const dados = FormHandler.receiveData(e);
+
+        WarningHandler.clearWarnings()
+        if (await AuthHandler.login(dados)) {
+            window.location.href = "../../index.html"
+
+        } else {
+            WarningHandler.showWarning("Email e/ou senha incorretos!")
+        }
+
+    }
+})
