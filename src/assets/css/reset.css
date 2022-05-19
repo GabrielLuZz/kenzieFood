@@ -141,7 +141,7 @@ table {
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    list-style: none;
     border: none;
-    background: none;
+    outline: 0;
+    list-style: none;
 }
