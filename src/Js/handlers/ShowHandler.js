@@ -1,27 +1,33 @@
 import { ProductService } from "../services/ProductService.js";
+import { AuthHandler } from "./AuthHandler.js";
+import { CartHandler } from "./CartHandler.js";
 
 export class ShowHandler {
+
+    static page = document.querySelector('title').innerText;
+
     static filterPerCategory(products, category) {
 
-        if(category === 'Todos'){
-            return products
+        if (category === 'Todos') {
+            return products;
         }
 
         const filterProducts = products.filter(
             (product) => product.categoria.toLowerCase() === category.toLowerCase()
         );
-        
+
+        console.log(filterProducts)
         return filterProducts;
     }
 
-    static searchedProducts(text, products) {
+    static searchedProducts(texto, products) {
         const searchedProducts = [];
         products.forEach((product) => {
-            if (product.nome.toLowerCase().includes(text)) {
+            if (product.nome.toLowerCase().includes(texto)) {
                 searchedProducts.push(product);
-            } else if (product.categoria.toLowerCase().includes(text)) {
+            } else if (product.categoria.toLowerCase().includes(texto)) {
                 searchedProducts.push(product);
-            } else if (product.descricao.toLowerCase().includes(text)) {
+            } else if (product.descricao.toLowerCase().includes(texto)) {
                 searchedProducts.push(product);
             }
         });
@@ -29,7 +35,11 @@ export class ShowHandler {
     }
 
     static headerMain(verify) {
+
+
+
         const headerPlace = document.querySelector(".header");
+        const header = document.createElement('header');
         const container = document.createElement('div');
         const leftSide = document.createElement('section');
         const leftSide__title = document.createElement('h1');
@@ -37,7 +47,7 @@ export class ShowHandler {
         const rightSide__search = document.createElement('div');
         const rightSide__icon = document.createElement('span');
         const rightSide__field = document.createElement('input');
-        const header = document.createElement('header');
+
 
         container.classList.add('container', 'container--header');
         leftSide.classList.add('leftSide');
@@ -55,13 +65,68 @@ export class ShowHandler {
         leftSide.appendChild(leftSide__title);
         rightSide.append(rightSide__search)
 
+        // <nav class="menuProfile">
+        //     <div class="menuProfile__topSide">
+        //         <span class="menuProfile__user">Time A</span>
+        //     </div>
+        //     <div class="menuProfile__bottomSide">
+        //         <button class="menuProfile__btn">Dashboard</button>
+        //         <button class="menuProfile__btn">Logout</button>
+        //     </div>
+        // </nav>
+
         if (verify) {
             const rightSide__photo = document.createElement('img');
+            const menuProfile = document.createElement('nav');
+            const menuProfile__topSide = document.createElement('div');
+            const menuProfile__user = document.createElement('span');
+            const menuProfile__bottomSide = document.createElement('div');
+            const menuProfile__btn1 = document.createElement('button');
+            const menuProfile__btn2 = document.createElement('button');
+
             rightSide__photo.classList.add('rightSide__photo');
             rightSide__photo.alt = 'profile photo';
             rightSide__photo.src = 'src/assets/images/profile.png';
+            menuProfile.classList.add('menuProfile');
+            menuProfile__topSide.classList.add('menuProfile__topSide');
+            menuProfile__user.classList.add('menuProfile__user');
+            menuProfile__user.innerText = 'Time 3';
+            menuProfile__bottomSide.classList.add('menuProfile__bottomSide');
+            menuProfile__btn1.classList.add('menuProfile__btn');
+            menuProfile__btn1.innerText = this.page === 'Home' ? 'Dashboard' : 'Home';
+            menuProfile__btn2.classList.add('menuProfile__btn');
+            menuProfile__btn2.innerText = 'Logout';
 
-            rightSide.appendChild(rightSide__photo)
+            rightSide__photo.addEventListener('click', this.toggleMenuProfile);
+
+            menuProfile__btn1.addEventListener('click', () => {
+
+
+                if (this.page === 'Home') {
+                    location.href = './src/pages/dashboard.html';
+                } else {
+                    location.href = '../../index.html';
+                }
+
+            })
+
+            menuProfile__btn2.addEventListener('click', () => {
+                AuthHandler.logout();
+
+                if (this.page === 'Home') {
+                    location.href = './src/pages/auth.html';
+                } else {
+                    location.href = './auth.html';
+                }
+            })
+
+
+            menuProfile.append(menuProfile__topSide, menuProfile__bottomSide);
+            menuProfile__topSide.appendChild(menuProfile__user);
+            menuProfile__bottomSide.append(menuProfile__btn1, menuProfile__btn2)
+
+            rightSide.append(rightSide__photo, menuProfile)
+
 
         } else {
             const rightSide__btn = document.createElement('a');
@@ -97,6 +162,24 @@ export class ShowHandler {
             const card__price = document.createElement('span');
             const card__btn = document.createElement('button');
 
+            // <article class="card">
+            //     <section class="card__image">
+            //         <img src="src/assets/images/pancake.png" alt="">
+            //     </section>
+            //     <section class="card__info">
+            //         <h3 class="card__title">Panqueca de banana com aveia</h3>
+            //         <p class="card__description">Esta receita serve muito bem 2 pessoas, deixa a gente bem satisfeito, se não tiver outra opção de café. Se tiver mais comida, como pães e frutas.</p>
+            //         <div class="card__categories">
+            //             <span class="card__category">Panificadora</span>
+            //             <span class="card__category">Frutas</span>
+            //         </div>
+            //         <div class="card__end">
+            //             <span class="card__price">R$ 20,00</span>
+            //             <button class="card__btn"><img src="src/assets/images/littleCart.png" alt=""></button>
+            //         </div>
+            //     </section>
+            // </article>
+
             card.classList.add('card');
             card__image.classList.add('card__image');
             img.src = product.imagem;
@@ -115,6 +198,10 @@ export class ShowHandler {
             card__btn.classList.add('card__btn');
             card__btn.innerHTML = '<img src="src/assets/images/littleCart.png" alt="add cart button">';
 
+            card__btn.addEventListener('click', () => {
+                CartHandler.addCart(verify, product)
+            })
+
             card.append(card__image, card__info);
             card__image.appendChild(img);
             card__info.append(card__title, card__description, card__categories, card__end);
@@ -127,45 +214,23 @@ export class ShowHandler {
     }
 
     static async getProducts(verify) {
-        let list = [] = await ProductService.getPublicProducts();
+
+        let list = []
+
 
         if (verify) {
-            list = list.concat(await ProductService.getPrivateProducts(localStorage.getItem("Token")))
+            list = await ProductService.getPrivateProducts(localStorage.getItem("Token"));
+            list = list.concat(await ProductService.getPublicProducts())
+        } else {
+            list = await ProductService.getPublicProducts()
         }
 
         return list;
     }
 
-    static async showProductsDashboard(verify){
-        if(verify == true){
-        let list = await ProductService.getPrivateProducts(localStorage.getItem("Token"));
-        let ul = document.getElementById("list__product");
+    static toggleMenuProfile() {
+        const menuProfile = document.querySelector('.menuProfile');
 
-        list.forEach((element)=>{
-            let li = document.createElement("li");
-
-            li.innerHTML =` <section class="content__product" >
-            <img src=${element.imagem} alt="" class="img__product">
-            <h2 class="name__product">${element.nome}</h2>`
-            let section = document.createElement("section") ;
-            section.className="categories";
-            element.product.categoria.forEach((element)=>{
-                let categoria = document.createElement("h3")
-                categoria.className = "categories__name";
-                categoria.innerText = element;
-                section.appendChild(categoria);
-            })
-            li.appendChild(section);
-            li.innerHTML += `<section class="description">
-                    <p class="description__text">${element.descricao}</p>  
-            </section>
-            <section class="actions">
-                <button class="edit">edit</button>
-                <button class="remove">remove</button>
-            </section>
-            </section>`
-            ul.appendChild(li);
-        })
-    }
+        menuProfile.classList.toggle('openElementWithFlex');
     }
 }

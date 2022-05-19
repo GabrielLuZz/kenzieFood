@@ -16,7 +16,15 @@ export class CartService {
         return response
     }
 
-    static async putInCart(token, product_id, quantity = 1) {
+    static async putInCart(token, product_id, quantity) {
+
+        const data = {}
+
+        data.product_id = product_id;
+
+        if (quantity) {
+            data.quantity = quantity;
+        }
 
         const response = await fetch(`${this.baseUrl}/cart/add`, {
                 method: 'POST',
@@ -24,7 +32,7 @@ export class CartService {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`
                 },
-                body: JSON.stringify({ product_id, quantity })
+                body: JSON.stringify(data)
             })
             .then(data => data.json())
             .then(data => data)

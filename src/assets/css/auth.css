@@ -1,94 +1,86 @@
 @import url('https://fonts.googleapis.com/css2?family=Chivo:wght@300&family=Inter:wght@100;700&family=Montserrat:ital,wght@0,300;0,400;0,700;1,200&family=Padauk:wght@700&family=Roboto:wght@100;400&display=swap');
-
-html, body{
+html,
+body {
     margin: 0%;
     padding: 0%;
 }
 
-:root{
+:root {
     --titulos-page: #212529;
-    --font-titles-page: 'Inter', sans-serif; 
+    --font-titles-page: 'Inter', sans-serif;
     --text-page: #868E96;
-    --background-page:#ffffff;
+    --background-page: #ffffff;
     --background-inputs: #eff0f0;
     --botoes-especiais: #FF2253;
 }
 
-.headerAuth{
+.headerAuth {
     width: 100%;
     height: 60px;
-
     background-color: var(--background-page);
     box-shadow: 0px 0px 40px 2px rgb(0 0 0 / 25%);
-
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.logo{
+.logo {
     font-family: var(--font-titles-page);
     font-style: normal;
     font-weight: 600;
     font-size: 85%;
     line-height: 29px;
-
     margin-left: 5%;
 }
 
-.logo_food{
+.logo_food {
     color: var(--botoes-especiais);
     margin-left: 1%;
     font-size: 70%;
     line-height: 20px;
 }
 
-.goHome{
+.goHome {
     float: right;
     margin-left: 50%;
     padding: 0%;
-
     font-family: var(--font-titles-page);
     font-style: normal;
     font-weight: 600;
     font-size: 85%;
     line-height: 29px;
-
     background-color: var(--botoes-especiais);
     border-radius: 10px;
     color: var(--background-page);
-
     width: 60px;
     height: 30px;
     cursor: pointer;
+    text-align: center;
 }
-.mainContent{
+
+.mainContent {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     width: 100%;
     height: 100%;
 }
 
-.mainContent_Login{
+.mainContent_Login {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     margin-top: 25%;
     padding: 10%;
-
     border: 1px solid var(--background-inputs);
     box-sizing: border-box;
     border-radius: 10px;
     box-shadow: 0px 0px 40px 2px rgb(0 0 0 / 25%);
-
     width: 70%;
     height: 100%;
 }
 
-.titulo_forms{
+.titulo_forms {
     font-family: var(--font-titles-page);
     font-style: normal;
     font-weight: 600;
@@ -97,39 +89,37 @@ html, body{
     margin-bottom: 15%;
 }
 
-.form_Login{
+.form_Login {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
-
     width: 100%;
     height: 100%;
 }
 
-.form_email, .form_senha, .form_nome {
+.form_email,
+.form_senha,
+.form_nome {
     width: 100%;
     height: 40px;
-
     border: none;
     border-radius: 8px;
 }
 
-.form_email:focus, .form_senha:focus, .form_nome:focus{
-      background-color: var(--background-page);
-      height: 45px;
-      border: none;
-
-      outline: 0;
-
-      box-shadow: 0px 0px 10px 0px rgba(52, 52, 52, 0.25);
+.form_email:focus,
+.form_senha:focus,
+.form_nome:focus {
+    background-color: var(--background-page);
+    height: 45px;
+    border: none;
+    outline: 0;
+    box-shadow: 0px 0px 10px 0px rgba(52, 52, 52, 0.25);
 }
 
-.form_botaoLogin{
+.form_botaoLogin {
     width: 60%;
-
     border-radius: 5%;
-
     font-family: var(--font-titles-page);
     font-style: normal;
     font-weight: 600;
@@ -137,18 +127,16 @@ html, body{
     line-height: 25px;
     border-radius: 10px;
     margin-top: 15%;
-
     color: var(--background-page);
     background-color: var(--botoes-especiais);
     cursor: pointer;
 }
 
-input{
+input {
     background-color: var(--background-inputs);
     color: var(--text-page);
     border-radius: 5%;
     border: 1.5px solid #DEE2E6;
-
     margin-top: 0%;
     margin-bottom: 5%;
     width: 80%;
@@ -159,19 +147,17 @@ input:focus::-webkit-input-placeholder {
     color: transparent;
     border: none;
     background-color: var(--background-page);
- }
+}
 
-.option_auth{
+.option_auth {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     margin-top: 10%;
-
     width: 100%;
 }
 
-.ou{
+.ou {
     font-family: var(--font-titles-page);
     font-style: normal;
     font-weight: 600;
@@ -179,29 +165,26 @@ input:focus::-webkit-input-placeholder {
     line-height: 35px;
 }
 
-.optionRegister{
+.optionRegister {
     background-color: var(--botoes-especiais);
     color: var(--background-page);
- 
     padding: 0%;
-
     font-family: var(--font-titles-page);
     font-style: normal;
     font-weight: 600;
     font-size: 85%;
     line-height: 29px;
     border-radius: 10px;
-
     width: 45%;
-
     margin-top: 5%;
     margin-bottom: 5%;
     cursor: pointer;
 }
 
+
 /*MODAL CADASTRO---------*/
 
-.modal_container{
+.modal_container {
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -214,87 +197,76 @@ input:focus::-webkit-input-placeholder {
     align-items: center;
 }
 
-.modal_container.mostrar{
+.modal_container.mostrar {
     display: flex;
 }
 
-.modal{
+.modal {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     margin-top: 30%;
     margin-bottom: 20%;
     padding: 10%;
     position: relative;
-
     border: 1px solid var(--background-inputs);
     box-sizing: border-box;
     border-radius: 10px;
     box-shadow: 0px 0px 40px 2px rgb(0 0 0 / 25%);
-
     width: 60%;
     min-width: 300px;
     height: 75%;
-
     background-color: var(--background-page);
 }
 
 @keyframes modal {
-    from{
-       opacity: 0;
-       transform: translate3d(0, -50px, 0);
+    from {
+        opacity: 0;
+        transform: translate3d(0, -50px, 0);
     }
-
-    to{
+    to {
         opacity: 1;
         transform: translate3d(0, 0, 0);
     }
 }
 
-.mostrar .modal{
+.mostrar .modal {
     animation: modal .9s;
 }
 
-
-.form_Cadastro{
+.form_Cadastro {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
-
     width: 100%;
     height: 100%
 }
 
-.form_botaoCadastro{
+.form_botaoCadastro {
     width: 60%;
     height: 10%;
-
     font-family: var(--font-titles-page);
     font-style: normal;
     font-weight: 600;
     font-size: 95%;
     line-height: 35px;
     border-radius: 10px;
-
     color: var(--background-page);
     background-color: var(--botoes-especiais);
     margin-top: 25%;
 }
 
-.fechar_modal{
+.fechar_modal {
     position: absolute;
     top: -15px;
     right: -15px;
     height: 35px;
     width: 35px;
     padding: 0%;
-
     border-radius: 50%;
     background-color: var(--botoes-especiais);
     color: var(--background-page);
-
     font-family: var(--font-titles-page);
     font-style: normal;
     font-weight: 600;
@@ -304,103 +276,86 @@ input:focus::-webkit-input-placeholder {
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, .3);
 }
 
-.nomeInput{
+.nomeInput {
     font-family: var(--font-titles-page);
     font-style: normal;
     font-weight: 600;
     font-size: 65%;
     line-height: 35px;
     color: #454545;
-
     margin-right: 85%;
     margin-bottom: 0%;
 }
 
-@media screen and (min-width: 600px){
-    .headerAuth{
+@media screen and (min-width: 600px) {
+    .headerAuth {
         box-shadow: 0px 0px 10px 2px rgba(52, 52, 52, 0.25);
     }
-
-    .logo{
+    .logo {
         font-size: 100%;
         line-height: 40px;
         margin-left: 4.5%;
     }
-
-    .logo_food{
+    .logo_food {
         font-size: 70%;
         line-height: 20px;
         margin-left: 0.2%;
         margin-top: 0.1%;
     }
-
-    .goHome{
+    .goHome {
         margin-left: 75%;
     }
-    
-    .mainContent{
-    width: 60%;
-    height: 60%;
-    margin-left: 20%;
+    .mainContent {
+        width: 60%;
+        height: 60%;
+        margin-left: 20%;
     }
-
-    .mainContent_Login{
+    .mainContent_Login {
         margin-top: 5%;
         width: 50%;
         height: 80%;
     }
-
-    .modal{
-    width: 40%;
-    min-width: 300px;
-    height: 75%;
-    margin-top: 20%;
-    padding: 4%;
-    justify-content: space-evenly;
+    .modal {
+        width: 40%;
+        min-width: 300px;
+        height: 75%;
+        margin-top: 20%;
+        padding: 4%;
+        justify-content: space-evenly;
     }
-
-    .option_auth{
+    .option_auth {
         margin-top: 3%;
         width: 100%;
     }
-
-    .optionRegister{
+    .optionRegister {
         margin-top: 2%;
         font-size: 18px;
         line-height: 35px;
-
         width: 30%;
     }
-
-    .form_Cadastro{
+    .form_Cadastro {
         width: 80%;
         height: 100%
-        
     }
-    
-    .form_email, .form_senha, .form_nome{
+    .form_email,
+    .form_senha,
+    .form_nome {
         width: 100%;
         height: 60px;
     }
-
-    .form_email:focus, .form_senha:focus, .form_nome:focus{
+    .form_email:focus,
+    .form_senha:focus,
+    .form_nome:focus {
         height: 70px;
     }
-
-    .form_botaoLogin{
-       width: 65%;
-       height: 50px;
-       font-size: 20px;
+    .form_botaoLogin {
+        width: 65%;
+        height: 50px;
+        font-size: 20px;
     }
-
-    .form_botaoCadastro{
+    .form_botaoCadastro {
         width: 60%;
         height: 50px;
         font-size: 20px;
     }
-
-
 }
-
-
-

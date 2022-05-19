@@ -11,6 +11,82 @@
 </head>
 
 <body>
+    <!-- <header>
+        <div class="container container--header">
+            <section class="leftSide">
+                <h1 class="leftSide__title">Kenzie <small>Food</small></h1>
+            </section>
+            <section class="rightSide">
+                <div class="rightSide__search">
+                    <span class="rightSide__icon"><img src="src/assets/images/search.png" alt="search icon"></span>
+                    <input type="text" class="rightSide__field">
+                </div>
+
+                <img src="src/assets/images/profile.png" alt="profile photo" class="rightSide__photo">
+            </section>
+        </div>
+    </header> -->
+
+    <!-- <script>
+        const token = localStorage.getItem("Token");
+        const container = document.createElement('div');
+        const leftSide = document.createElement('section');
+        const leftSide__title = document.createElement('h1');
+        const rightSide = document.createElement('section');
+        const rightSide__search = document.createElement('div');
+        const rightSide__icon = document.createElement('span');
+        const rightSide__field = document.createElement('input');
+        const header = document.createElement('header');
+
+        container.classList.add('container', 'container--header');
+        leftSide.classList.add('leftSide');
+        leftSide__title.classList.add('leftSide__title');
+        leftSide__title.innerHTML = 'Kenzie <small>Food</small';
+        rightSide.classList.add('rightSide');
+        rightSide__search.classList.add('rightSide__search');
+        rightSide__icon.classList.add('rightSide__icon');
+        rightSide__icon.innerHTML = '<img src="src/assets/images/search.png" alt="search icon">';
+        rightSide__field.classList.add('rightSide__field');
+        rightSide__field.placeholder = 'Pesquisar por produto';
+
+        header.appendChild(container);
+        container.append(leftSide, rightSide);
+        leftSide.appendChild(leftSide__title);
+        rightSide.append(rightSide__search)
+
+        if (token !== null) {
+            const rightSide__photo = document.createElement('img');
+            rightSide__photo.classList.add('rightSide__photo');
+            rightSide__photo.alt = 'profile photo';
+            rightSide__photo.src = 'src/assets/images/profile.png';
+
+            rightSide.appendChild(rightSide__photo)
+        }
+
+        rightSide__search.append(rightSide__icon, rightSide__field)
+
+        document.body.appendChild(header)
+    </script> -->
+
+    <!-- <article class="card">
+        <section class="card__image">
+            <img src="src/assets/images/pancake.png" alt="">
+        </section>
+        <section class="card__info">
+            <h3 class="card__title">Panqueca de banana com aveia</h3>
+            <p class="card__description">Esta receita serve muito bem 2 pessoas, deixa a gente bem satisfeito, se não tiver outra opção de café. Se tiver mais comida, como pães e frutas.</p>
+            <div class="card__categories">
+                <span class="card__category">Panificadora</span>
+                <span class="card__category">Frutas</span>
+            </div>
+            <div class="card__end">
+                <span class="card__price">R$ 20,00</span>
+                <button class="card__btn"><img src="src/assets/images/littleCart.png" alt=""></button>
+            </div>
+        </section>
+    </article> -->
+
+
 
     <div class="header">
 
@@ -57,138 +133,16 @@
                     <span class="cart__close">X</span>
                 </section>
                 <section class="cart__body">
-                    <article class="itemCart">
-                        <section class="itemCart__image">
-                            <img src="src/assets/images/pancake.png" alt="image item">
-                        </section>
-                        <section class="itemCart__info">
-                            <h4 class="itemCart__title">Panqueca de banana...</h4>
-                            <p class="itemCart__category">Panificadora</p>
-                            <span class="itemCart__price">R$ 20,00</span>
-                        </section>
-                        <section class="itemCart__delete">
-                            <button class="itemCart__btn"><img src="src/assets/images/trash.png" alt=""></button>
-                        </section>
-                    </article>
-                    <article class="itemCart">
-                        <section class="itemCart__image">
-                            <img src="src/assets/images/pancake.png" alt="image item">
-                        </section>
-                        <section class="itemCart__info">
-                            <h4 class="itemCart__title">Panqueca de banana...</h4>
-                            <p class="itemCart__category">Panificadora</p>
-                            <span class="itemCart__price">R$ 20,00</span>
-                        </section>
-                        <section class="itemCart__delete">
-                            <button class="itemCart__btn"><img src="src/assets/images/trash.png" alt=""></button>
-                        </section>
-                    </article>
-                    <article class="itemCart">
-                        <section class="itemCart__image">
-                            <img src="src/assets/images/pancake.png" alt="image item">
-                        </section>
-                        <section class="itemCart__info">
-                            <h4 class="itemCart__title">Panqueca de banana...</h4>
-                            <p class="itemCart__category">Panificadora</p>
-                            <span class="itemCart__price">R$ 20,00</span>
-                        </section>
-                        <section class="itemCart__delete">
-                            <button class="itemCart__btn"><img src="src/assets/images/trash.png" alt=""></button>
-                        </section>
-                    </article>
-
-                    <article class="itemCart">
-                        <section class="itemCart__image">
-                            <img src="src/assets/images/pancake.png" alt="image item">
-                        </section>
-                        <section class="itemCart__info">
-                            <h4 class="itemCart__title">Panqueca de banana...</h4>
-                            <p class="itemCart__category">Panificadora</p>
-                            <span class="itemCart__price">R$ 20,00</span>
-                        </section>
-                        <section class="itemCart__delete">
-                            <button class="itemCart__btn"><img src="src/assets/images/trash.png" alt=""></button>
-                        </section>
-                    </article>
-
-                    <article class="itemCart">
-                        <section class="itemCart__image">
-                            <img src="src/assets/images/pancake.png" alt="image item">
-                        </section>
-                        <section class="itemCart__info">
-                            <h4 class="itemCart__title">Panqueca de banana...</h4>
-                            <p class="itemCart__category">Panificadora</p>
-                            <span class="itemCart__price">R$ 20,00</span>
-                        </section>
-                        <section class="itemCart__delete">
-                            <button class="itemCart__btn"><img src="src/assets/images/trash.png" alt=""></button>
-                        </section>
-                    </article>
-
-
-
-                    <article class="itemCart">
-                        <section class="itemCart__image">
-                            <img src="src/assets/images/pancake.png" alt="image item">
-                        </section>
-                        <section class="itemCart__info">
-                            <h4 class="itemCart__title">Panqueca de banana...</h4>
-                            <p class="itemCart__category">Panificadora</p>
-                            <span class="itemCart__price">R$ 20,00</span>
-                        </section>
-                        <section class="itemCart__delete">
-                            <button class="itemCart__btn"><img src="src/assets/images/trash.png" alt=""></button>
-                        </section>
-                    </article>
-                    <article class="itemCart">
-                        <section class="itemCart__image">
-                            <img src="src/assets/images/pancake.png" alt="image item">
-                        </section>
-                        <section class="itemCart__info">
-                            <h4 class="itemCart__title">Panqueca de banana...</h4>
-                            <p class="itemCart__category">Panificadora</p>
-                            <span class="itemCart__price">R$ 20,00</span>
-                        </section>
-                        <section class="itemCart__delete">
-                            <button class="itemCart__btn"><img src="src/assets/images/trash.png" alt=""></button>
-                        </section>
-                    </article>
-                    <article class="itemCart">
-                        <section class="itemCart__image">
-                            <img src="src/assets/images/pancake.png" alt="image item">
-                        </section>
-                        <section class="itemCart__info">
-                            <h4 class="itemCart__title">Panqueca de banana...</h4>
-                            <p class="itemCart__category">Panificadora</p>
-                            <span class="itemCart__price">R$ 20,00</span>
-                        </section>
-                        <section class="itemCart__delete">
-                            <button class="itemCart__btn"><img src="src/assets/images/trash.png" alt=""></button>
-                        </section>
-                    </article>
-                    <article class="itemCart">
-                        <section class="itemCart__image">
-                            <img src="src/assets/images/pancake.png" alt="image item">
-                        </section>
-                        <section class="itemCart__info">
-                            <h4 class="itemCart__title">Panqueca de banana...</h4>
-                            <p class="itemCart__category">Panificadora</p>
-                            <span class="itemCart__price">R$ 20,00</span>
-                        </section>
-                        <section class="itemCart__delete">
-                            <button class="itemCart__btn"><img src="src/assets/images/trash.png" alt=""></button>
-                        </section>
-                    </article>
 
                 </section>
                 <section class="cart__footer">
                     <section class="quantity">
                         <span class="quantity__title">Quantidade</span>
-                        <span class="quantity__value">5</span>
+                        <span class="quantity__value">0</span>
                     </section>
                     <section class="total">
                         <span class="total__title">Total</span>
-                        <span class="total__value">R$ 85,00</span>
+                        <span class="total__value">R$ 0,00</span>
                     </section>
                 </section>
             </section>
