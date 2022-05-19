@@ -74,44 +74,44 @@
         <aside id="modal__cadastrar--edit" class="modal__container">
             <section class="modal">
                 <section class="modal__head">
-                    <h2 class="modal__title">Cadastro de produto</h2>
+                    <h2 id="modal__title--main" class="modal__title">Cadastro de produto</h2>
                     <button id="modal__close" class="modal__close">X</button>
                 </section>
                 <section class="modal__body">
                     <form class="modal__form" action="">
                         <label class="modal__label">
                             <div class="modal__category">Nome do Produto</div>
-                            <input class="modal__field modal__field--input" type="text" placeholder="Pizza Vegetariana de Brócolis" name="nome">
+                            <input id="modal__title" class="modal__field modal__field--input" type="text" placeholder="Pizza Vegetariana de Brócolis" name="nome">
                         </label>
 
                         <label class="modal__label">
                             <div class="modal__category">Descrição</div>
-                            <textarea class="modal__field modal__field--textarea" name="descricao" placeholder="Esse é um dos sabores de pizza mais pedidos por quem não come carne"></textarea>
+                            <textarea id="modal__description" class="modal__field modal__field--textarea" name="descricao" placeholder="Esse é um dos sabores de pizza mais pedidos por quem não come carne"></textarea>
                         </label>
 
                         <label class="modal__label">
                             <div class="modal__category">Categorias</div>
                             
-                            <span class="modal__field modal__field--radio modal__field--salmon" id="panificadora">Panificadora</span>
+                            <span class="modal__field modal__field--radio modal__field--gray" id="panificadora">Panificadora</span>
                             <span class="modal__field modal__field--radio modal__field--gray" id="frutas">Frutas</span>
                             <span class="modal__field modal__field--radio modal__field--gray" id="bebidas">Bebidas</span>
                         </label>
 
                         <label class="modal__label">
                             <div class="modal__category">Valor do Produto</div>
-                            <input class="modal__field modal__field--input" type="number" name="preco" placeholder="50.00" ></input>
+                            <input  id ="modal__price" class="modal__field modal__field--input" type="number" name="preco" placeholder="50.00" ></input>
                         </label>
 
                         <label class="modal__label">
                             <div class="modal__category">Link da imagem</div>
-                            <input class="modal__field modal__field--input" type="url" name="imagem" placeholder="https://images.unsplash.com/" ></input>
+                            <input id="modal__image" class="modal__field modal__field--input" type="url" name="imagem" placeholder="https://images.unsplash.com/" ></input>
                         </label>
 
                     </form>
                 </section>
                 <section class="modal__foot">
-                    <button class="modal__btn modal__btn--gray">Excluir</button>
-                    <button class="modal__btn modal__btn--salmon">Salvar alterações</button>
+                    <button id="modal__forfeit" class="modal__btn modal__btn--gray">Excluir</button>
+                    <button id="modal__save" class="modal__btn modal__btn--salmon">Salvar alterações</button>
                 </section>
             </section>
         </aside>
