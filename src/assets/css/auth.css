@@ -166,7 +166,7 @@ body {
     font-family: var(--font-titles-page);
     font-style: normal;
     font-weight: 600;
-    font-size: 22px;
+    font-size: 26px;
     line-height: 25px;
     margin-bottom: 15%;
 }
@@ -266,10 +266,8 @@ input:focus::-webkit-input-placeholder {
     cursor: pointer;
 }
 
-.optionRegister:hover,
-.form_botaoLogin:hover,
-.goHome:hover,
-.form_botaoCadastro:hover {
+.optionRegister:hover, .form_botaoLogin:hover, .goHome:hover, .form_botaoCadastro:hover{
+
     background-color: #d20834;
 }
 
@@ -372,7 +370,7 @@ input:focus::-webkit-input-placeholder {
     font-family: var(--font-titles-page);
     font-style: normal;
     font-weight: 600;
-    font-size: 65%;
+    font-size: 85%;
     line-height: 35px;
     color: #454545;
     margin-right: 85%;
