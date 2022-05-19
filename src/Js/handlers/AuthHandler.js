@@ -17,8 +17,8 @@ export class AuthHandler {
             return true;
         }
     }
-    static async login(data) {
-        const user = await UserService.loginUser(data);
+    static async login({ email, password }) {
+        const user = await UserService.loginUser({ email, password });
         if (user.error !== undefined) {
             return false;
         }
@@ -28,7 +28,7 @@ export class AuthHandler {
     }
 
     static async register(data) {
-        const user = await UserService.register(data);
+        const user = await UserService.registerUser(data);
         if (user.id !== undefined) {
             localStorage.setItem("userId", user.id);
             return true;

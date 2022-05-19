@@ -1,4 +1,5 @@
 export class ProductService {
+
   static baseUrl = "https://api-kenzie-food.herokuapp.com";
 
   static async getPublicProducts() {
@@ -71,3 +72,4 @@ export class ProductService {
     return response;
   }
 }
+

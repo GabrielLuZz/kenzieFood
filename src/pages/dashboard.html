@@ -16,13 +16,22 @@
 
     </div>
 
+    <!-- <div class="warning">
+        <div class="warning__status">
+            <span class="warning__title">Status</span>
+            <button class="warning__close">X</button>
+        </div>
+        <div class="warning__message"></div>
+        <div class="warning__bar"></div>
+    </div> -->
+
     <section class="mainAside">
 
         <main>
             <div class="container container--main">
                 <nav class="menu">
                     <ul class="menu__list">
-                        <li class="menu__item menu__item--all">
+                        <li class="menu__item menu__item--all menu__item--selected">
                             <h2 class="menu__title">Todos</h2>
                         </li>
                         <li class="menu__item menu__item--bakery">
@@ -105,6 +114,23 @@
                     <button id="modal__save" class="modal__btn modal__btn--salmon">Salvar alterações</button>
                 </section>
             </section>
+        </aside>
+
+        <aside id="modal__cadastrar--edit" class="modal__container--remove ">
+           <div class="modal__remove">
+               <section class="modal__head">
+               <h2 class="modal__title ">Exclusão de produto</h2>
+               <button id="modal__close--remove" class="modal__close">X</button>
+               </section>
+               <section class="body__modal--remove">
+                   <h3 class="modal__title--remove">Tem certeza que deseja excluir este produto?</h3>
+                   <div class="buttons__modal--remove">
+                       <button id="modal__btn--yes" class="modal__btn--remove modal__btn--gray">Sim</button>
+                       <button id="modal__btn--no" class="modal__btn--remove modal__btn--gray">Não</button>
+                   </div>
+               </section>
+           </div>
+
         </aside>
     </section>
 

@@ -11,26 +11,24 @@ export class DashBoardHandler {
     modal.classList.remove("mostrar");
   }
 
-  static async listProductsinDashboard() {
-    const mainBody = document.querySelector(".body");
-    mainBody.innerText = "";
 
-    const privateProducts = await ProductService.getPrivateProducts(
-      localStorage.getItem("Token")
-    );
+  static listProductsinDashboard(privateProducts) {
+      const mainBody = document.querySelector('.body');
+        mainBody.innerText = '';
 
-    privateProducts.forEach((product) => {
-      const card = document.createElement("article");
-      const card__product = document.createElement("div");
-      const card__image = document.createElement("img");
-      const card__title = document.createElement("h3");
-      const card__categories = document.createElement("div");
-      const card__category = document.createElement("span");
-      const card__description = document.createElement("div");
-      const card__text = document.createElement("p");
-      const card__actions = document.createElement("div");
-      const card__btnEdit = document.createElement("button");
-      const card__btnRemove = document.createElement("button");
+        privateProducts.forEach(product => {
+            const card = document.createElement('article');
+            const card__product = document.createElement('div');
+            const card__image = document.createElement('img');
+            const card__title = document.createElement('h3');
+            const card__categories = document.createElement('div');
+            const card__category = document.createElement('span');
+            const card__description = document.createElement('div');
+            const card__text = document.createElement('p');
+            const card__actions = document.createElement('div');
+            const card__btnEdit = document.createElement('button');
+            const card__btnRemove = document.createElement('button');
+
 
       card.classList.add("card");
       card__product.classList.add("card__product");
@@ -124,6 +122,7 @@ export class DashBoardHandler {
       productDescription.placeholder = "Adicione uma descrição do seu produto";
       productName.placeholder = "Nome do Produto";
     }
+
   }
   static closeModal() {
     const modal = document.querySelector(".modal__container");
@@ -175,3 +174,4 @@ export class DashBoardHandler {
     });
   }
 }
+
