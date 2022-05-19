@@ -29,7 +29,7 @@ if (verify) {
 
 
 const filters = document.querySelectorAll('.menu__item');
-const rightSide__field = document.querySelector('.rightSide__field')
+const rightSide__field = document.querySelector('.rightSide__field');
 const open = document.querySelector('.open');
 const aside = document.querySelector('aside');
 const cart__close = document.querySelector('.cart__close')
@@ -42,6 +42,8 @@ filters.forEach(filter => {
         const filtered = ShowHandler.filterPerCategory(products, category);
 
         ShowHandler.showProducts(filtered, verify);
+
+        ShowHandler.changeTheSelected(event.currentTarget)
     })
 })
 
