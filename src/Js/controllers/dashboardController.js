@@ -16,7 +16,7 @@ if (verify) {
 
 
     const products = await ProductService.getPrivateProducts(localStorage.getItem('Token'));
-
+    console.log(products)
     DashBoardHandler.listProductsinDashboard(products)
 
     const filters = document.querySelectorAll('.menu__item');
