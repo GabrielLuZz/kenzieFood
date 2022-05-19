@@ -12,253 +12,19 @@
     --bg-body: #fafafa;
 }
 
-
-/*CSS DA VITRINE*/
-
-.subtitle {
-    color: var(--fontColor);
-    font-family: var(--font-titles-page);
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
-}
-
-.show__products {
-    display: flex;
-    flex-direction: column;
-}
-
-
-/*CSS DE CADA PRODUTO*/
-
-.img__product {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    margin-left: 10px;
-    float: left;
-}
-
-.name__product {
-    margin-left: -8%;
-}
-
-.content__product {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 8vw;
-    min-height: 112px;
-    overflow-x: auto;
-    border: 1px solid #E9ECEF;
-    border-radius: 12px;
-    margin-left: 20px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-}
-
-
-/*FILTROS-------*/
-
-.titles {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 30px;
-}
-
-.categories {
-    display: flex;
-    flex-direction: column;
-}
-
-.botoesCat {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    margin-top: 5px;
-}
-
-.modal__categories {
-    min-width: 80px;
-    height: 30px;
-    color: #212529;
-    background-color: #e7e7e7;
-    border-radius: 20px;
-    margin-left: 5px;
-    font-size: 8px;
-}
-
-.title__modal {
-    font-size: 18px;
-    margin-right: 7px;
-    margin-top: -20px;
-    margin-bottom: 20px;
-}
-
-.description {
-    margin-right: -5%;
-}
-
-.alternative__button {
-    width: 100px;
-    height: 40px;
-    color: #212529;
-    background-color: #e7e7e7;
-    border-radius: 20px;
-    margin-left: 5px;
-    margin-top: 30px;
-    font-size: 18px;
-}
-
-.modal__deletar {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-.edit,
-.remove {
-    width: 20px;
-    height: 20px;
-}
-
-.actions {
-    margin-right: 5px;
-}
-
-.buttonAddProduct {
-    display: flex;
-    justify-content: center;
-}
-
-.optionRegisterModal {
-    background-color: var(--botoes-especiais);
-    color: var(--background-page);
-    padding: 0%;
-    font-family: var(--font-titles-page);
-    font-style: normal;
-    font-weight: 600;
-    font-size: 85%;
-    line-height: 29px;
-    border-radius: 20px;
-    width: 65%;
-    height: 45px;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    cursor: pointer;
-}
-
-.buttons__modal--edit {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-@media screen and (min-width: 600px) {
-    .headerAuth {
-        box-shadow: 0px 0px 10px 2px rgba(52, 52, 52, 0.25);
-    }
-    .logo {
-        font-size: 100%;
-        line-height: 40px;
-        margin-left: 4.5%;
-    }
-    .logo_food {
-        font-size: 70%;
-        line-height: 20px;
-        margin-left: 0.2%;
-        margin-top: 0.1%;
-    }
-    .goHome {
-        margin-left: 75%;
-    }
-    .mainContent {
-        width: 60%;
-        height: 60%;
-        margin-left: 20%;
-    }
-    .mainContent_Login {
-        margin-top: 5%;
-        width: 50%;
-        height: 80%;
-    }
-    .option_auth {
-        margin-top: 3%;
-        width: 100%;
-    }
-    .optionRegister {
-        margin-top: 2%;
-        font-size: 18px;
-        line-height: 35px;
-        width: 30%;
-    }
-    .form_Cadastro {
-        width: 80%;
-        height: 100%
-    }
-    .form_email,
-    .form_senha,
-    .form_nome {
-        width: 100%;
-        height: 60px;
-    }
-    .form_email:focus,
-    .form_senha:focus,
-    .form_nome:focus {
-        height: 70px;
-    }
-    .form_botaoLogin {
-        width: 65%;
-        height: 50px;
-        font-size: 20px;
-    }
-    .form_botaoCadastro {
-        width: 60%;
-        height: 50px;
-        font-size: 20px;
-    }
-    .buttonAddProduct {
-        position: fixed;
-        margin-left: 82%;
-        margin-bottom: 70%;
-        width: 20%;
-    }
-    .content__product {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        height: 72px;
-        border: 1px solid #E9ECEF;
-        border-radius: 12px;
-        margin-left: 30px;
-        margin-right: 10px;
-        width: 130%;
-        margin-bottom: 20px;
-    }
-}
-
-
-/* css colocado pelo tech lead  */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Nunito:wght@700&family=Poppins:wght@400;500;700&display=swap');
-:root {
-    --first-color: #212529;
-    --second-color: #FF2253;
-    --third-color: #E9ECEF;
-    --fontColor: #868E96;
-    --bakery: #FFF7F4;
-    --fruits: #FFF1F4;
-    --drinks: #F3EEF5;
-    --add-button: #E4F7EF;
-    --cart--button: #F8F9FA;
-    --bg-body: #fafafa;
-}
-
 body {
     font-family: 'Poppins', sans-serif;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #ffffff;
+}
+::-webkit-scrollbar {
+    width: 6px;
+    background: none;
+}
+::-webkit-scrollbar-thumb {
+    background: #c7c7c7;
 }
 
 .container {
@@ -694,7 +460,6 @@ aside {
     color: #84878a;
 }
 
-
 .modal {
     width: 97%;
     max-width: 580px;
@@ -1111,8 +876,6 @@ aside {
         border: 1.5px solid #FF2253;
         color: #F8F9FA;
     }
-
-
 }
 
 @media (min-width: 1000px) {
