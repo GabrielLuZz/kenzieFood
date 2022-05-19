@@ -180,7 +180,7 @@ export class CartHandler {
         quantity__value.innerText = quantity;
         total__value.innerText = total;
 
-        if (quantity === 1) {
+        if (quantity >= 1) {
             const cart__body = document.querySelector('.cart__body');
             const cart__footer = document.querySelector('.cart__footer');
             cart__body.classList.add('cart__body--full')
