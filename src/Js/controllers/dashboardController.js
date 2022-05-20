@@ -63,7 +63,9 @@ if (verify) {
   modal__save.addEventListener("click", async (event) => {
     event.preventDefault;
     await DashBoardHandler.sendModal(event);
-    location.reload();
+    setTimeout(() => {
+      location.reload;
+    }, 2000);
   });
 
   const productTagAll = document.querySelectorAll(
