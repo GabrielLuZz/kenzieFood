@@ -54,6 +54,10 @@ export class CartHandler {
             const itemCart__ItemQt = document.createElement('div');
             const itemCart__qtmais = document.createElement('button');
             const itemCart__btn = document.createElement('button');
+            const newPrice = new Intl.NumberFormat("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+            }).format(product.preco);
 
             itemCart.classList.add('itemCart');
             itemCart__image.classList.add('itemCart__image');
@@ -65,7 +69,7 @@ export class CartHandler {
             itemCart__category.classList.add('itemCart__category');
             itemCart__category.innerText = product.categoria;
             itemCart__price.classList.add('itemCart__price');
-            itemCart__price.innerText = `$ ${product.preco}`;
+            itemCart__price.innerText = `${newPrice}`;
             itemCart__delete.classList.add('itemCart__delete');
             itemCart__QtArea.classList.add('itemCart__QtArea');
             itemCart__qtmenos.classList.add('itemCart__qtmenos');
@@ -177,8 +181,13 @@ export class CartHandler {
             return acc + item.quantity * item.products.preco;
         }, 0)
 
+        const newPrice = new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+        }).format(total);
+
         quantity__value.innerText = quantity;
-        total__value.innerText = total;
+        total__value.innerText = newPrice;
 
         if (quantity >= 1) {
             const cart__body = document.querySelector('.cart__body');
