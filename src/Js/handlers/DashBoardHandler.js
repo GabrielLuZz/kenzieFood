@@ -116,9 +116,6 @@ export class DashBoardHandler {
       const container__id = document.querySelector(".modal__remove");
       container__id.id = product.id;
       container__remove.classList.add("show");
-
-      // await ProductService.deleteProduct(token, product.id);
-      // this.listProductsInDashboard();
     } else {
       const modalTitle = document.querySelector("#modal__title--main");
       modalTitle.innerText = "Adicionar novo Produto";
