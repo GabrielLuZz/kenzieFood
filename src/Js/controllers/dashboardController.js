@@ -60,9 +60,10 @@ if (verify) {
   });
 
   const modal__save = document.querySelector("#modal__save");
-  modal__save.addEventListener("click", (event) => {
+  modal__save.addEventListener("click", async (event) => {
     event.preventDefault;
-    DashBoardHandler.sendModal(event);
+    await DashBoardHandler.sendModal(event);
+    location.reload();
   });
 
   const productTagAll = document.querySelectorAll(
