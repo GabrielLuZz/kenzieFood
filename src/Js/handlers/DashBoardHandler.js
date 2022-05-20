@@ -1,6 +1,8 @@
+
 import { ProductService } from "../services/ProductService.js";
 
 export class DashBoardHandler {
+
   static addClassList(id) {
     const modal = document.getElementById(id);
     modal.classList.add("mostrar");
@@ -10,6 +12,7 @@ export class DashBoardHandler {
     const modal = document.getElementById(id);
     modal.classList.remove("mostrar");
   }
+
 
   static async listProductsInDashboard(privateProducts) {
     if (!privateProducts) {
@@ -181,4 +184,5 @@ export class DashBoardHandler {
       target.classList.add("modal__field--salmon");
     });
   }
+
 }
