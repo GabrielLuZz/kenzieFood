@@ -151,10 +151,6 @@ export class ShowHandler {
             const card__end = document.createElement('div');
             const card__price = document.createElement('span');
             const card__btn = document.createElement('button');
-            const newPrice = new Intl.NumberFormat("pt-BR", {
-                style: "currency",
-                currency: "BRL",
-            }).format(product.preco);
 
             card.classList.add('card');
             card__image.classList.add('card__image');
@@ -170,9 +166,7 @@ export class ShowHandler {
             card__category.innerText = product.categoria;
             card__end.classList.add('card__end');
             card__price.classList.add('card__price');
-            card__price.innerText = `${newPrice}`;
-
-
+            card__price.innerText = `R$ ${product.preco}`;
             card__btn.classList.add('card__btn');
             card__btn.innerHTML = '<img src="src/assets/images/littleCart.png" alt="add cart button">';
 

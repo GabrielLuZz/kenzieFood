@@ -29,18 +29,6 @@ body {
     background: #c7c7c7;
 }
 
-.menuProfile__btn {
-    transition: all ease .5s;
-    cursor: pointer;
-}
-
-.menuProfile__btn:hover {
-    transform: scale(1.08);
-    background-color: var(--first-color);
-    border: 1px solid #F8F9FA;
-    color: #F8F9FA;
-}
-
 .warning {
     display: flex;
     flex-direction: column;
@@ -55,15 +43,6 @@ body {
     animation-duration: 1s;
     z-index: 99;
     border: 3px solid #F8F9FA;
-}
-
-.rightSide__photo {
-    cursor: pointer;
-    transition: all ease .5s;
-}
-
-.rightSide__photo:hover {
-    transform: scale(1.2);
 }
 
 .warning__status {
@@ -153,6 +132,10 @@ body {
     display: flex;
     justify-content: center;
 }
+
+
+
+
 
 .rightSide__icon {
     height: 100%;
@@ -278,14 +261,6 @@ body {
     border-radius: 12px;
     line-height: 40px;
     text-align: center;
-    transition: all ease .5s;
-}
-
-.rightSide__btn:hover {
-    background-color: #f8f9fa;
-    border: 1.5px solid #ff2253;
-    color: #ff2253;
-    transform: scale(1.07);
 }
 
 .mainAside {
@@ -305,7 +280,6 @@ main {
     align-items: center;
     overflow-x: auto;
     margin-bottom: 30px;
-    padding-left: 10px;
 }
 
 .menu__list {
@@ -319,12 +293,8 @@ main {
     border-radius: 32px;
     align-items: center;
     cursor: pointer;
-    transition: all ease .3s;
 }
 
-.menu__item:hover {
-    transform: scale(1.1);
-}
 
 .menu__item--all {
     background-color: #7b72a4;
@@ -332,7 +302,7 @@ main {
 
 .menu__item--all:hover {
     box-shadow: 10px 5px 5px #383158;
-    height: 59px;
+   height: 59px;
 }
 
 .menu__item--bakery {
@@ -342,7 +312,7 @@ main {
 
 .menu__item--bakery:hover {
     box-shadow: 10px 5px 5px #81021d;
-    height: 59px;
+   height: 59px;
 }
 
 .menu__item--fruits {
@@ -355,15 +325,17 @@ main {
     height: 59px;
 }
 
+
 .menu__item--drinks {
     background-color: var(--drinks);
     border: 1.5px solid var(--drinks)
 }
 
-.menu__item--drinks:hover {
+.menu__item--drinks:hover{
     box-shadow: 10px 5px 5px #81021d;
     height: 59px;
 }
+
 
 .menu__item--selected {
     background-color: var(--second-color);
@@ -469,12 +441,8 @@ main {
     height: 38px;
     border-radius: 100%;
     background-color: var(--add-button);
-    transition: all ease .8s;
 }
 
-.card__btn:hover {
-    transform: translateY(6px);
-}
 
 .card__btn img {
     width: 15px;
@@ -482,9 +450,10 @@ main {
     object-fit: cover;
 }
 
-.card__btn:hover {
+.card__btn:hover{
     background-color: #ccc;
 }
+
 
 aside {
     position: fixed;
@@ -639,11 +608,7 @@ aside {
     cursor: pointer;
     padding: 0px 10px;
     color: #333;
-    transition: all ease .7s;
-    cursor: pointer;
 }
-
-.itemCart__qtmenos:hover {}
 
 .itemCart__ItemQt {
     line-height: 30px;
@@ -657,8 +622,6 @@ aside {
     cursor: pointer;
     padding: 0px 10px;
     color: #333;
-    transition: all ease .7s;
-    cursor: pointer;
 }
 
 .itemCart__btn {
@@ -667,8 +630,6 @@ aside {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all ease .7s;
-    cursor: pointer;
 }
 
 .cart__footer {
@@ -796,15 +757,6 @@ aside {
         top: unset;
         bottom: 29px;
         right: 28px;
-    }
-    .itemCart__qtmenos:hover {
-        transform: scale(2);
-    }
-    .itemCart__qtmais:hover {
-        transform: scale(1.6);
-    }
-    .itemCart__btn:hover {
-        transform: translateY(-5px);
     }
 }
 
