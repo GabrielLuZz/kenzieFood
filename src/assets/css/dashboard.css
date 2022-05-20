@@ -28,6 +28,12 @@
     --bg-body: #fafafa;
 }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 body {
     font-family: "Poppins", sans-serif;
 }
@@ -287,9 +293,87 @@ body {
     padding-right: 18px;
 }
 
+.menu__item {
+    display: flex;
+    padding: 15px 20px;
+    margin-right: 15px;
+    border-radius: 32px;
+    align-items: center;
+    cursor: pointer;
+    transition: all ease .3s;
+}
+
+.menu {
+    padding: 0px 10px;
+}
+
+.menu__item:hover {
+    transform: scale(1.1);
+}
+
+.menu__item--all {
+    background-color: #7b72a4;
+}
+
+.menu__item--all:hover {
+    box-shadow: 10px 5px 5px #383158;
+    height: 59px;
+}
+
+.menu__item--bakery {
+    background-color: var(--bakery);
+    border: 1.5px solid var(--bakery);
+}
+
+.menu__item--bakery:hover {
+    box-shadow: 10px 5px 5px #81021d;
+    height: 59px;
+}
+
+.menu__item--fruits {
+    background-color: var(--fruits);
+    border: 1.5px solid var(--fruits);
+}
+
+.menu__item--fruits:hover {
+    box-shadow: 10px 5px 5px #81021d;
+    height: 59px;
+}
+
+.menu__item--drinks {
+    background-color: var(--drinks);
+    border: 1.5px solid var(--drinks)
+}
+
+.menu__item--drinks:hover {
+    box-shadow: 10px 5px 5px #81021d;
+    height: 59px;
+}
+
 main {
     margin-bottom: 21px;
     flex: 1;
+}
+
+.menuProfile__btn {
+    transition: all ease .5s;
+    cursor: pointer;
+}
+
+.menuProfile__btn:hover {
+    transform: scale(1.08);
+    background-color: var(--first-color);
+    border: 1px solid #F8F9FA;
+    color: #F8F9FA;
+}
+
+.rightSide__photo {
+    cursor: pointer;
+    transition: all ease .5s;
+}
+
+.rightSide__photo:hover {
+    transform: scale(1.2);
 }
 
 .menu {
@@ -475,6 +559,7 @@ main {
     justify-content: center;
     align-items: center;
     margin-right: 15px;
+    cursor: pointer;
 }
 
 aside {
@@ -595,6 +680,7 @@ aside {
     height: 30px;
     background: #e9ecef;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 .modal__body {
@@ -635,6 +721,10 @@ aside {
     font-weight: 400;
     font-size: 16px;
     color: #868e96;
+}
+
+span.modal__field {
+    cursor: pointer;
 }
 
 .modal__field::placeholder {
@@ -697,6 +787,7 @@ aside {
     font-weight: 500;
     font-size: 16px;
     height: 70%;
+    cursor: pointer;
 }
 
 .modal__btn--gray {
@@ -1091,6 +1182,24 @@ aside {
 }
 
 @media (min-width: 1000px) {
+    .modal__btn {
+        transition: all ease .5s;
+    }
+    .modal__btn:hover {
+        transform: scale(1.1);
+    }
+    .open {
+        transition: all ease .5s;
+    }
+    .open:hover {
+        transform: scale(1.1);
+    }
+    .card__btn {
+        transition: all ease .5s;
+    }
+    .card__btn:hover {
+        transform: translateY(-8px);
+    }
     .warning {
         top: unset;
         bottom: 29px;
@@ -1174,6 +1283,21 @@ aside {
         bottom: 680px;
         border: 1.5px solid #FF2253;
         border-radius: 32px;
+        cursor: pointer;
+    }
+    .modal__field {
+        transition: all ease .5s;
+    }
+    span.modal__field:hover {
+        background-color: var(--second-color);
+        color: #fff;
+        transform: scale(1.1);
+    }
+    .modal__close {
+        transition: all ease .5s;
+    }
+    .modal__close:hover {
+        transform: scale(1.2);
     }
 }
 

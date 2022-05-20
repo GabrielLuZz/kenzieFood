@@ -245,7 +245,7 @@ a:hover {
     color: var(--background-page);
     background-color: var(--botoes-especiais);
     cursor: pointer;
-    padding: 0%;
+    padding: 6px;
 }
 
 input {
@@ -285,13 +285,13 @@ input:focus::-webkit-input-placeholder {
 .optionRegister {
     background-color: var(--botoes-especiais);
     color: var(--background-page);
-    padding: 0%;
+    padding: 12px;
     font-family: var(--font-titles-page);
     font-style: normal;
     font-weight: 600;
     font-size: 85%;
     line-height: 29px;
-    border-radius: 10px;
+    border-radius: 29px;
     width: 45%;
     margin-top: 5%;
     margin-bottom: 5%;
@@ -492,4 +492,16 @@ input:focus::-webkit-input-placeholder {
         bottom: 50px;
         right: 28px;
     }
+}
+
+.form_email,
+input {
+    font-size: 20px;
+    font-family: 'Poppins';
+    font-weight: 400;
+}
+
+.form_senha {
+    font-size: 20px;
+    font-family: 'Poppins';
 }

@@ -29,6 +29,18 @@ body {
     background: #c7c7c7;
 }
 
+.menuProfile__btn {
+    transition: all ease .5s;
+    cursor: pointer;
+}
+
+.menuProfile__btn:hover {
+    transform: scale(1.08);
+    background-color: var(--first-color);
+    border: 1px solid #F8F9FA;
+    color: #F8F9FA;
+}
+
 .warning {
     display: flex;
     flex-direction: column;
