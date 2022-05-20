@@ -102,6 +102,18 @@ body {
     color: #212529;
 }
 
+button,
+input,
+a {
+    transition: all ease .5s;
+}
+
+button:hover,
+input[type*="submit"]:hover,
+a:hover {
+    transform: scale(1.1);
+}
+
 .warning__bar {
     width: 100%;
     height: 8px;
@@ -112,11 +124,18 @@ body {
 
 .headerAuth {
     width: 100%;
-    height: 60px;
+    height: 74px;
     background-color: var(--background-page);
     box-shadow: 0px 0px 40px 2px rgb(0 0 0 / 25%);
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+
+.areaLogo {
+    display: flex;
     align-items: center;
 }
 
@@ -124,21 +143,20 @@ body {
     font-family: var(--font-titles-page);
     font-style: normal;
     font-weight: 600;
-    font-size: 85%;
+    font-size: 18px;
     line-height: 29px;
-    margin-left: 5%;
+    margin-right: 20px;
 }
 
 .logo_food {
     color: var(--botoes-especiais);
     margin-left: 1%;
-    font-size: 70%;
+    font-size: 14px;
     line-height: 20px;
 }
 
 .goHome {
     float: right;
-    margin-left: 50%;
     padding: 0%;
     font-family: var(--font-titles-page);
     font-style: normal;
@@ -227,7 +245,7 @@ body {
     color: var(--background-page);
     background-color: var(--botoes-especiais);
     cursor: pointer;
-    padding: 0%;
+    padding: 6px;
 }
 
 input {
@@ -267,13 +285,13 @@ input:focus::-webkit-input-placeholder {
 .optionRegister {
     background-color: var(--botoes-especiais);
     color: var(--background-page);
-    padding: 0%;
+    padding: 12px;
     font-family: var(--font-titles-page);
     font-style: normal;
     font-weight: 600;
     font-size: 85%;
     line-height: 29px;
-    border-radius: 10px;
+    border-radius: 29px;
     width: 45%;
     margin-top: 5%;
     margin-bottom: 5%;
@@ -399,19 +417,13 @@ input:focus::-webkit-input-placeholder {
         box-shadow: 0px 0px 10px 2px rgba(52, 52, 52, 0.25);
     }
     .logo {
-        font-size: 100%;
         line-height: 40px;
         margin-left: 4.5%;
     }
     .logo_food {
-        font-size: 70%;
         line-height: 20px;
-        margin-left: 0.2%;
-        margin-top: 0.1%;
     }
-    .goHome {
-        margin-left: 75%;
-    }
+    .goHome {}
     .mainContent {
         width: 100%;
         height: 60%;
@@ -480,4 +492,16 @@ input:focus::-webkit-input-placeholder {
         bottom: 50px;
         right: 28px;
     }
+}
+
+.form_email,
+input {
+    font-size: 20px;
+    font-family: 'Poppins';
+    font-weight: 400;
+}
+
+.form_senha {
+    font-size: 20px;
+    font-family: 'Poppins';
 }
