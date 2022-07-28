@@ -1,236 +1,234 @@
 import { CartService } from "../services/CartService.js";
 
 export class CartHandler {
-  static cart = localStorage.getItem("cart")
-    ? JSON.parse(localStorage.getItem("cart"))
-    : [];
+    static cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
 
-  static async addCart(verify, product) {
-    if (verify) {
-      await CartService.putInCart(localStorage.getItem("Token"), product.id);
+    static async addCart(verify, product) {
+        if (verify) {
+            await CartService.putInCart(localStorage.getItem('Token'), product.id);
 
-      const productsInCart = await CartService.getProductsInCart(
-        localStorage.getItem("Token")
-      );
+            const productsInCart = await CartService.getProductsInCart(localStorage.getItem('Token'));
 
-      this.updateCart(productsInCart, verify);
-    } else {
-      const productInCart = this.cart.find(
-        (item) => item.products.id === product.id
-      );
+            this.updateCart(productsInCart, verify)
 
-      if (productInCart) {
-        productInCart.quantity++;
-      } else {
-        const formattedProduct = {
-          quantity: 1,
-          products: product,
-        };
 
-        this.cart.push(formattedProduct);
-      }
+        } else {
 
-      this.updateCart(this.cart, verify);
+            const productInCart = this.cart.find(item => item.products.id === product.id)
 
-      localStorage.setItem("cart", JSON.stringify(this.cart));
-    }
-  }
+            if (productInCart) {
+                productInCart.quantity++;
+            } else {
 
-  static showItemsInCart(products, verify) {
-    const cart__body = document.querySelector(".cart__body");
+                const formattedProduct = {
+                    quantity: 1,
+                    products: product
+                }
 
-    cart__body.innerText = "";
+                this.cart.push(formattedProduct);
+            }
 
-    products.forEach(({ quantity, products: product }) => {
-      const itemCart = document.createElement("article");
-      const itemCart__image = document.createElement("section");
-      const img = document.createElement("img");
-      const itemCart__info = document.createElement("section");
-      const itemCart__title = document.createElement("h4");
-      const itemCart__category = document.createElement("p");
-      const itemCart__price = document.createElement("span");
-      const itemCart__delete = document.createElement("section");
-      const itemCart__QtArea = document.createElement("div");
-      const itemCart__qtmenos = document.createElement("button");
-      const itemCart__ItemQt = document.createElement("div");
-      const itemCart__qtmais = document.createElement("button");
-      const itemCart__btn = document.createElement("button");
+            this.updateCart(this.cart, verify)
 
-      itemCart.classList.add("itemCart");
-      itemCart__image.classList.add("itemCart__image");
-      img.src = product.imagem;
-      img.alt = product.nome;
-      itemCart__info.classList.add("itemCart__info");
-      itemCart__title.classList.add("itemCart__title");
-      itemCart__title.innerText = product.nome;
-      itemCart__category.classList.add("itemCart__category");
-      itemCart__category.innerText = product.categoria;
-      itemCart__price.classList.add("itemCart__price");
-      itemCart__price.innerText = `$ ${product.preco}`;
-      itemCart__delete.classList.add("itemCart__delete");
-      itemCart__QtArea.classList.add("itemCart__QtArea");
-      itemCart__qtmenos.classList.add("itemCart__qtmenos");
-      itemCart__qtmenos.innerText = "-";
-      itemCart__ItemQt.classList.add("itemCart__ItemQt");
-      itemCart__ItemQt.innerText = quantity;
-      itemCart__qtmais.classList.add("itemCart__qtmais");
-      itemCart__qtmais.innerText = "+";
-      itemCart__btn.classList.add("itemCart__btn");
-      itemCart__btn.innerHTML =
-        '<img src="src/assets/images/trash.png" alt="trash image">';
-
-      itemCart__qtmenos.addEventListener("click", () => {
-        this.decreaseInCart(product, quantity, verify);
-      });
-
-      itemCart__qtmais.addEventListener("click", () => {
-        this.increaseInCart(product, verify);
-      });
-
-      itemCart__btn.addEventListener("click", () => {
-        this.removeInCart(product, verify);
-      });
-
-      itemCart.append(itemCart__image, itemCart__info, itemCart__delete);
-      itemCart__image.appendChild(img);
-      itemCart__info.append(
-        itemCart__title,
-        itemCart__category,
-        itemCart__price
-      );
-      itemCart__delete.append(itemCart__QtArea, itemCart__btn);
-      itemCart__QtArea.append(
-        itemCart__qtmenos,
-        itemCart__ItemQt,
-        itemCart__qtmais
-      );
-
-      cart__body.appendChild(itemCart);
-    });
-  }
-
-  static async removeInCart(product, verify) {
-    if (verify) {
-      await CartService.deleteInCart(localStorage.getItem("Token"), product.id);
-
-      const productsInCart = await CartService.getProductsInCart(
-        localStorage.getItem("Token")
-      );
-
-      this.updateCart(productsInCart, verify);
-    } else {
-      const indexInCart = this.cart.findIndex(
-        (item) => item.products.id === product.id
-      );
-
-      this.cart.splice(indexInCart, 1);
-
-      this.updateCart(this.cart, verify);
-
-      localStorage.setItem("cart", JSON.stringify(this.cart));
-    }
-  }
-
-  static async increaseInCart(product, verify) {
-    if (verify) {
-      await CartService.putInCart(localStorage.getItem("Token"), product.id);
-
-      const productsInCart = await CartService.getProductsInCart(
-        localStorage.getItem("Token")
-      );
-
-      this.updateCart(productsInCart, verify);
-    } else {
-      const productInCart = this.cart.find(
-        (item) => item.products.id === product.id
-      );
-
-      productInCart.quantity++;
-
-      this.updateCart(this.cart, verify);
-
-      localStorage.setItem("cart", JSON.stringify(this.cart));
-    }
-  }
-
-  static async decreaseInCart(product, quantity, verify) {
-    if (quantity === 1) {
-      this.removeInCart(product, verify);
-      return;
+            localStorage.setItem('cart', JSON.stringify(this.cart));
+        }
     }
 
-    if (verify) {
-      let newQuantity = quantity - 1;
+    static showItemsInCart(products, verify) {
 
-      await CartService.putInCart(
-        localStorage.getItem("Token"),
-        product.id,
-        newQuantity
-      );
+        const cart__body = document.querySelector('.cart__body');
 
-      const productsInCart = await CartService.getProductsInCart(
-        localStorage.getItem("Token")
-      );
+        cart__body.innerText = '';
 
-      this.updateCart(productsInCart, verify);
-    } else {
-      const productInCart = this.cart.find(
-        (item) => item.products.id === product.id
-      );
+        products.forEach(({ quantity, products: product }) => {
+            const itemCart = document.createElement('article');
+            const itemCart__image = document.createElement('section');
+            const img = document.createElement('img');
+            const itemCart__info = document.createElement('section');
+            const itemCart__title = document.createElement('h4');
+            const itemCart__category = document.createElement('p');
+            const itemCart__price = document.createElement('span');
+            const itemCart__delete = document.createElement('section');
+            const itemCart__QtArea = document.createElement('div');
+            const itemCart__qtmenos = document.createElement('button');
+            const itemCart__ItemQt = document.createElement('div');
+            const itemCart__qtmais = document.createElement('button');
+            const itemCart__btn = document.createElement('button');
+            const newPrice = new Intl.NumberFormat("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+            }).format(product.preco);
 
-      productInCart.quantity--;
+            itemCart.classList.add('itemCart');
+            itemCart__image.classList.add('itemCart__image');
+            img.src = product.imagem;
+            img.alt = product.nome;
+            itemCart__info.classList.add('itemCart__info');
+            itemCart__title.classList.add('itemCart__title');
+            itemCart__title.innerText = product.nome;
+            itemCart__category.classList.add('itemCart__category');
+            itemCart__category.innerText = product.categoria;
+            itemCart__price.classList.add('itemCart__price');
+            itemCart__price.innerText = `${newPrice}`;
+            itemCart__delete.classList.add('itemCart__delete');
+            itemCart__QtArea.classList.add('itemCart__QtArea');
+            itemCart__qtmenos.classList.add('itemCart__qtmenos');
+            itemCart__qtmenos.innerText = '-';
+            itemCart__ItemQt.classList.add('itemCart__ItemQt');
+            itemCart__ItemQt.innerText = quantity;
+            itemCart__qtmais.classList.add('itemCart__qtmais');
+            itemCart__qtmais.innerText = '+';
+            itemCart__btn.classList.add('itemCart__btn');
+            itemCart__btn.innerHTML = '<img src="src/assets/images/trash.png" alt="trash image">';
 
-      this.updateCart(this.cart, verify);
 
-      localStorage.setItem("cart", JSON.stringify(this.cart));
+            itemCart__qtmenos.addEventListener('click', () => {
+                this.decreaseInCart(product, quantity, verify);
+            })
+
+            itemCart__qtmais.addEventListener('click', () => {
+                this.increaseInCart(product, verify);
+            })
+
+            itemCart__btn.addEventListener('click', () => {
+                this.removeInCart(product, verify);
+            })
+
+            itemCart.append(itemCart__image, itemCart__info, itemCart__delete);
+            itemCart__image.appendChild(img);
+            itemCart__info.append(itemCart__title, itemCart__category, itemCart__price);
+            itemCart__delete.append(itemCart__QtArea, itemCart__btn);
+            itemCart__QtArea.append(itemCart__qtmenos, itemCart__ItemQt, itemCart__qtmais);
+
+            cart__body.appendChild(itemCart)
+        })
+
     }
-  }
 
-  static updateCart(products, verify) {
-    const quantity__value = document.querySelector(".quantity__value");
-    const total__value = document.querySelector(".total__value");
-    const cartOpen__quantity = document.querySelector(".cartOpen__quantity");
+    static async removeInCart(product, verify) {
+        if (verify) {
+            await CartService.deleteInCart(localStorage.getItem('Token'), product.id)
 
-    let quantity = products.reduce((acc, item) => {
-      return acc + item.quantity;
-    }, 0);
+            const productsInCart = await CartService.getProductsInCart(localStorage.getItem('Token'));
 
-    let total = products.reduce((acc, item) => {
-      return acc + item.quantity * item.products.preco;
-    }, 0);
+            this.updateCart(productsInCart, verify)
+        } else {
+            const indexInCart = this.cart.findIndex(item => item.products.id === product.id)
 
-    quantity__value.innerText = quantity;
-    cartOpen__quantity.innerText = quantity;
-    total__value.innerText = newPrice;
+            this.cart.splice(indexInCart, 1)
 
-    if (quantity >= 1) {
-      const cart__body = document.querySelector(".cart__body");
-      const cart__footer = document.querySelector(".cart__footer");
-      cart__body.classList.add("cart__body--full");
-      cart__body.classList.remove("cart__body--empty");
+            this.updateCart(this.cart, verify)
 
-      cart__footer.classList.add("openElementWithBlock");
-    } else if (quantity === 0) {
-      const cart__body = document.querySelector(".cart__body");
-      const cart__footer = document.querySelector(".cart__footer");
-      const img = document.createElement("img");
-      const p = document.createElement("p");
-
-      cart__body.innerText = "";
-
-      img.src = "./src/assets/images/shoppingBag.png";
-      img.alt = "shopping icon";
-
-      p.innerText = "Por enquanto não temos produtos no carrinho";
-      cart__body.classList.add("cart__body--empty");
-      cart__body.classList.remove("cart__body--full");
-      cart__body.append(img, p);
-
-      cart__footer.classList.remove("openElementWithBlock");
+            localStorage.setItem('cart', JSON.stringify(this.cart));
+        }
     }
 
-    if (quantity > 0) {
-      this.showItemsInCart(products, verify);
+    static async increaseInCart(product, verify) {
+        if (verify) {
+            await CartService.putInCart(localStorage.getItem('Token'), product.id);
+
+            const productsInCart = await CartService.getProductsInCart(localStorage.getItem('Token'));
+
+            this.updateCart(productsInCart, verify)
+        } else {
+            const productInCart = this.cart.find(item => item.products.id === product.id)
+
+            productInCart.quantity++;
+
+            this.updateCart(this.cart, verify)
+
+            localStorage.setItem('cart', JSON.stringify(this.cart));
+        }
     }
-  }
+
+    static async decreaseInCart(product, quantity, verify) {
+        if (quantity === 1) {
+            this.removeInCart(product, verify)
+            return;
+        }
+
+        if (verify) {
+            let newQuantity = quantity - 1;
+
+            await CartService.putInCart(localStorage.getItem('Token'), product.id, newQuantity);
+
+            const productsInCart = await CartService.getProductsInCart(localStorage.getItem('Token'));
+
+            this.updateCart(productsInCart, verify)
+        } else {
+            const productInCart = this.cart.find(item => item.products.id === product.id)
+
+            productInCart.quantity--;
+
+            this.updateCart(this.cart, verify)
+
+
+
+            localStorage.setItem('cart', JSON.stringify(this.cart));
+        }
+    }
+
+    static updateCart(products, verify) {
+
+        const quantity__value = document.querySelector('.quantity__value');
+        const total__value = document.querySelector('.total__value');
+        const cartOpen__quantity = document.querySelector('.cartOpen__quantity');
+
+        let quantity = products.reduce((acc, item) => {
+            return acc + item.quantity
+        }, 0)
+
+        let total = products.reduce((acc, item) => {
+            return acc + item.quantity * item.products.preco;
+        }, 0)
+
+        const newPrice = new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+        }).format(total);
+
+        quantity__value.innerText = quantity;
+        cartOpen__quantity.innerText = quantity;
+        total__value.innerText = newPrice;
+
+        if (quantity >= 1) {
+
+
+            const cart__body = document.querySelector('.cart__body');
+            const cart__footer = document.querySelector('.cart__footer');
+            cart__body.classList.add('cart__body--full')
+            cart__body.classList.remove('cart__body--empty')
+
+
+            cart__footer.classList.add('openElementWithBlock');
+
+        } else if (quantity === 0) {
+
+            const cart__body = document.querySelector('.cart__body');
+            const cart__footer = document.querySelector('.cart__footer');
+            const img = document.createElement('img');
+            const p = document.createElement('p');
+
+            cart__body.innerText = '';
+
+            img.src = './src/assets/images/shoppingBag.png';
+            img.alt = 'shopping icon';
+
+            p.innerText = 'Por enquanto não temos produtos no carrinho'
+            cart__body.classList.add('cart__body--empty')
+            cart__body.classList.remove('cart__body--full')
+            cart__body.append(img, p);
+
+            cart__footer.classList.remove('openElementWithBlock');
+        }
+
+        if (quantity > 0) {
+            this.showItemsInCart(products, verify)
+        }
+
+
+
+    }
+
+
 }
