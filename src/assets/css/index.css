@@ -1,89 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Nunito:wght@700&family=Poppins:wght@400;500;700&display=swap");
 
 body {
-<<<<<<< HEAD
   font-family: "Poppins", sans-serif;
-=======
-    font-family: 'Poppins', sans-serif;
-}
-
-::-webkit-scrollbar-track {
-    background-color: #ffffff;
-}
-
-::-webkit-scrollbar {
-    width: 6px;
-    background: none;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #c7c7c7;
-}
-
-.warning {
-    display: flex;
-    flex-direction: column;
-    width: 275px;
-    height: 152px;
-    position: absolute;
-    top: 73px;
-    right: 12px;
-    background: #fff;
-    border-radius: 11px;
-    animation-name: entrar;
-    animation-duration: 1s;
-    z-index: 99;
-    border: 3px solid #F8F9FA;
-}
-
-.warning__status {
-    flex: 1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 28px;
-    width: 100%;
-    background: #F8F9FA;
-    border-radius: 8px 8px 0px 0px;
-}
-
-.warning__title {
-    font-weight: 500;
-    font-size: 14px;
-}
-
-.warning__close {
-    width: 31px;
-    height: 30px;
-    background: #E9ECEF;
-    border-radius: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Nunito';
-    font-weight: 400;
-    font-size: 14px;
-    color: #868E96;
-}
-
-.warning__message {
-    width: 100%;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    padding: 0px 28px;
-    font-weight: 400;
-    font-size: 14px;
-    color: #212529;
-}
-
-.warning__bar {
-    width: 100%;
-    height: 8px;
-    background: #39DF8F;
-    border-radius: 0px 0px 8px 8px;
-    transition: width 6s linear;
->>>>>>> d33fe42f468b9fc8ef6859c4b30b8933e4acf5f9
 }
 
 .container {
@@ -143,10 +61,6 @@ body {
 .cartOpen__icon {
   width: 45px;
 }
-
-
-
-
 
 .rightSide__icon {
   height: 100%;
@@ -341,7 +255,6 @@ main {
   height: 59px;
 }
 
-
 .menu__item--drinks {
   background-color: var(--drinks);
   border: 1.5px solid var(--drinks);
@@ -351,7 +264,6 @@ main {
   box-shadow: 10px 5px 5px #81021d;
   height: 59px;
 }
-
 
 .menu__item--selected {
   background-color: var(--second-color);
@@ -463,7 +375,6 @@ main {
   height: 15px;
   object-fit: cover;
 }
-
 
 aside {
   position: fixed;

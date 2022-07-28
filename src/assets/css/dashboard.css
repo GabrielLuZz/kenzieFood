@@ -27,23 +27,6 @@
   }
 }
 
-<<<<<<< HEAD
-=======
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Nunito:wght@700&family=Poppins:wght@400;500;700&display=swap");
-:root {
-  --first-color: #212529;
-  --second-color: #ff2253;
-  --third-color: #e9ecef;
-  --fontColor: #868e96;
-  --bakery: #fff7f4;
-  --fruits: #fff1f4;
-  --drinks: #f3eef5;
-  --add-button: #e4f7ef;
-  --cart--button: #f8f9fa;
-  --bg-body: #fafafa;
-}
-
->>>>>>> d33fe42f468b9fc8ef6859c4b30b8933e4acf5f9
 body {
   font-family: "Poppins", sans-serif;
   overflow-x: hidden;
