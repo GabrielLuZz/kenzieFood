@@ -31,8 +31,9 @@ if (verify) {
 const filters = document.querySelectorAll('.menu__item');
 const rightSide__field = document.querySelector('.rightSide__field');
 const open = document.querySelector('.open');
+const cartOpen = document.querySelector('.cartOpen');
 const aside = document.querySelector('aside');
-const cart__close = document.querySelector('.cart__close')
+const cart__close = document.querySelector('.cart__close');
 
 filters.forEach(filter => {
     filter.addEventListener('click', (event) => {
@@ -70,6 +71,22 @@ open.addEventListener('click', () => {
 
     }, 200);
 })
+
+cartOpen.addEventListener('click', () => {
+
+    aside.style.opacity = 0;
+
+    aside.style.display = "flex";
+
+    setTimeout(() => {
+
+        aside.style.opacity = 1;
+
+    }, 200);
+
+
+})
+
 
 cart__close.addEventListener('click', () => {
     aside.style.opacity = 0;
