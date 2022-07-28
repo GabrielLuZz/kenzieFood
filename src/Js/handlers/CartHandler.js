@@ -172,6 +172,7 @@ export class CartHandler {
 
         const quantity__value = document.querySelector('.quantity__value');
         const total__value = document.querySelector('.total__value');
+        const cartOpen__quantity = document.querySelector('.cartOpen__quantity');
 
         let quantity = products.reduce((acc, item) => {
             return acc + item.quantity
@@ -187,9 +188,12 @@ export class CartHandler {
         }).format(total);
 
         quantity__value.innerText = quantity;
+        cartOpen__quantity.innerText = quantity;
         total__value.innerText = newPrice;
 
         if (quantity >= 1) {
+
+
             const cart__body = document.querySelector('.cart__body');
             const cart__footer = document.querySelector('.cart__footer');
             cart__body.classList.add('cart__body--full')

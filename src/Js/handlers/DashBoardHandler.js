@@ -1,14 +1,47 @@
 import { ProductService } from "../services/ProductService.js";
+import { ShowHandler } from "./ShowHandler.js";
+import { WarningHandler } from "./WarningHandler.js";
 
 export class DashBoardHandler {
   static addClassList(id) {
     const modal = document.getElementById(id);
-    modal.classList.add("mostrar");
+    modal.classList.add("show");
+  }
+
+  static setEventFilters(products) {
+    const filters = document.querySelectorAll(".menu__item");
+
+    filters.forEach((filter) => {
+      filter.addEventListener("click", (event) => {
+        const children = event.currentTarget.children;
+        const category = children[children.length - 1].innerText;
+
+        const filtered = ShowHandler.filterPerCategory(products, category);
+
+        this.listProductsInDashboard(filtered);
+        ShowHandler.changeTheSelected(event.currentTarget);
+      });
+    });
+  }
+
+  static setEventSearch(products) {
+    const rightSide__field = document.querySelector(".rightSide__field");
+
+    rightSide__field.addEventListener("keyup", (event) => {
+      const text = event.currentTarget.value;
+
+      if (text) {
+        const searched = ShowHandler.searchedProducts(text, products);
+        this.listProductsInDashboard(searched);
+      } else {
+        this.listProductsInDashboard(products);
+      }
+    });
   }
 
   static removeClassList(id) {
-    const modal = document.getElementById(id);
-    modal.classList.remove("mostrar");
+    const modal = document.queryComma(id);
+    modal.classList.remove("show");
   }
 
   static async listProductsInDashboard(privateProducts) {
@@ -16,6 +49,9 @@ export class DashBoardHandler {
       privateProducts = await ProductService.getPrivateProducts(
         localStorage.getItem("Token")
       );
+
+      this.setEventFilters(privateProducts);
+      this.setEventSearch(privateProducts);
     }
 
     const mainBody = document.querySelector(".body");
@@ -79,106 +115,257 @@ export class DashBoardHandler {
       mainBody.appendChild(card);
     });
   }
-  static async modalDashboard(event, product) {
-    const token = localStorage.getItem("Token");
-    const btn__class = event.path[1].classList[1];
-    console.log(btn__class);
-    if (btn__class === "card__btn--edit") {
-      const modal = document.querySelector(".modal__container");
-      modal.style.display = "flex";
-      const productName = document.querySelector("#modal__title");
-      const productDescription = document.querySelector("#modal__description");
-      const productPrice = document.querySelector("#modal__price");
-      const productImg = document.querySelector("#modal__image");
-      const productContainer = document.querySelector(".modal");
-      const modalTitle = document.querySelector("#modal__title--main");
-      modalTitle.innerText = "Edição de Produtos";
-      productContainer.id = product.id;
-      const productTagAll = document.querySelectorAll(
-        ".modal__field.modal__field--radio"
-      );
-      const productTag = [...productTagAll];
-      const tagToLower = product.categoria.toLowerCase();
-      productTag.forEach((element) => {
-        element.classList.remove("modal__field--salmon");
-        if (element.id === tagToLower) {
-          element.classList.add("modal__field--salmon");
-        }
+
+  static createForm(product = null) {
+    const modal__body = document.querySelector(".modal__body");
+    modal__body.innerText = "";
+
+    if (product === null) {
+      modal__body.innerHTML = `
+        <form class="modal__form" action="">
+          <label class="modal__label">
+              <div class="modal__category">Nome do Produto</div>
+              <input class="modal__field modal__field--input" type="text" placeholder="Pizza Vegetariana de Brócolis" name="nome">
+          </label>
+
+          <label class="modal__label">
+              <div class="modal__category">Descrição</div>
+              <textarea class="modal__field modal__field--textarea" name="descricao" placeholder="Esse é um dos sabores de pizza mais pedidos por quem não come carne"></textarea>
+          </label>
+
+          <label class="modal__label">
+            <div class="modal__category">Categorias</div>
+            
+            <label class="modal__field modal__field--radio modal__field--salmon" id="panificadora">
+                <input type="radio" name="categoria" value="Panificadora" >
+                Panificadora
+            </label>
+
+            <label class="modal__field modal__field--radio modal__field--gray" id="frutas">
+                <input type="radio" name="categoria" value="Frutas" >
+                Frutas
+            </label>
+
+            <label class="modal__field modal__field--radio modal__field--gray" id="bebidas">
+                <input type="radio" name="categoria" value="Bebidas">
+                Bebidas
+            </label>
+          </label>
+
+          <label class="modal__label">
+              <div class="modal__category">Valor do Produto</div>
+              <input class="modal__field modal__field--input" type="number" name="preco" placeholder="50.00" >
+          </label>
+
+          <label class="modal__label">
+              <div class="modal__category">Link da imagem</div>
+              <input class="modal__field modal__field--input" type="url" name="imagem" placeholder="https://images.unsplash.com/" >
+          </label>
+
+        </form>      
+      `;
+
+      const selecionado = document.querySelector(".modal__field");
+      selecionado.focus();
+    } else {
+      modal__body.innerHTML = `
+          <form class="modal__form" action="">
+            <label class="modal__label">
+                <div class="modal__category">Nome do Produto</div>
+                <input class="modal__field modal__field--input" type="text" placeholder="Pizza Vegetariana de Brócolis" name="nome" value="${
+                  product.nome
+                }">
+            </label>
+  
+            <label class="modal__label">
+                <div class="modal__category">Descrição</div>
+                <textarea class="modal__field modal__field--textarea" name="descricao" placeholder="Esse é um dos sabores de pizza mais pedidos por quem não come carne">${
+                  product.descricao
+                }</textarea>
+            </label>
+  
+            <label class="modal__label">
+              <div class="modal__category">Categorias</div>
+              
+              <label class="modal__field modal__field--radio ${
+                product.categoria.toLowerCase() === "panificadora"
+                  ? "modal__field--salmon"
+                  : "modal__field--gray"
+              }" id="panificadora">
+                  <input type="radio" name="categoria" ${
+                    product.categoria.toLowerCase() === "panificadora"
+                      ? "checked"
+                      : ""
+                  } value="Panificadora" >
+                  Panificadora
+              </label>
+  
+              <label class="modal__field modal__field--radio ${
+                product.categoria.toLowerCase() === "frutas"
+                  ? "modal__field--salmon"
+                  : "modal__field--gray"
+              }" id="frutas">
+                  <input type="radio" name="categoria" ${
+                    product.categoria.toLowerCase() === "frutas"
+                      ? "checked"
+                      : ""
+                  } value="Frutas" >
+                  Frutas
+              </label>
+  
+              <label class="modal__field modal__field--radio ${
+                product.categoria.toLowerCase() === "bebidas"
+                  ? "modal__field--salmon"
+                  : "modal__field--gray"
+              }" id="bebidas">
+                  <input type="radio" name="categoria" ${
+                    product.categoria.toLowerCase() === "bebidas"
+                      ? "checked"
+                      : ""
+                  } value="Bebidas">
+                  Bebidas
+              </label>
+            </label>
+  
+            <label class="modal__label">
+                <div class="modal__category">Valor do Produto</div>
+                <input class="modal__field modal__field--input" type="number" name="preco" value="${
+                  product.preco
+                }" placeholder="50.00" >
+            </label>
+  
+            <label class="modal__label">
+                <div class="modal__category">Link da imagem</div>
+                <input class="modal__field modal__field--input" type="url" name="imagem" value="${
+                  product.imagem
+                }" placeholder="https://images.unsplash.com/" >
+            </label>
+  
+          </form>      
+        `;
+    }
+
+    document.querySelectorAll(".modal__field--radio").forEach((radio) => {
+      radio.addEventListener("click", (e) => {
+        document.querySelectorAll(".modal__field--radio").forEach((item) => {
+          item.classList.remove("modal__field--salmon");
+        });
+
+        e.currentTarget.classList.add("modal__field--salmon");
       });
-      productImg.value = product.imagem;
-      productPrice.value = product.preco;
-      productDescription.value = product.descricao;
-      productName.value = product.nome;
-    } else if (btn__class === "card__btn--remove") {
-      const container__remove = document.querySelector(
-        "#modal__cadastrar--remove"
-      );
-      const container__id = document.querySelector(".modal__remove");
-      container__id.id = product.id;
-      container__remove.classList.add("show");
-    } else {
-      const modalTitle = document.querySelector("#modal__title--main");
-      modalTitle.innerText = "Adicionar novo Produto";
-      const modal = document.querySelector(".modal__container");
-      modal.style.display = "flex";
-      const productName = document.querySelector("#modal__title");
-      const productDescription = document.querySelector("#modal__description");
-      const productPrice = document.querySelector("#modal__price");
-      const productImg = document.querySelector("#modal__image");
+    });
+  }
 
-      productImg.placeholder = "URL Da imagem do produto";
-      productPrice.value = 0;
-      productDescription.placeholder = "Adicione uma descrição do seu produto";
-      productName.placeholder = "Nome do Produto";
+  static modalDashboard(event, product) {
+    const btn__class = event.currentTarget.classList;
+    const modal = document.querySelector(".modal");
+    const aside = document.querySelector("aside");
+    const modal__title = document.querySelector(".modal__title");
+    const cancelButton = document.querySelector(".modal__btn--gray");
+    const sendButton = document.querySelector(".modal__btn--salmon");
+    const modal__body = document.querySelector(".modal__body");
+    modal__body.classList.remove("modal__remove");
+
+    sendButton.removeEventListener("click", this.sendModal);
+
+    aside.classList.add("show");
+    if (btn__class.contains("card__btn--edit")) {
+      modal.setAttribute("data-id", product.id);
+      modal__title.innerText = "Edição de produto";
+      this.createForm(product);
+      modal.setAttribute("data-acao", "editar");
+    } else if (btn__class.contains("card__btn--remove")) {
+      modal.setAttribute("data-id", product.id);
+      modal__title.innerText = "Exclusão de produto";
+      modal__body.innerHTML = "";
+      modal__body.innerHTML =
+        '<strong style="font-weight:500;">Tem certeza que deseja exluir este produto?</strong>';
+      modal__body.classList.add("modal__remove");
+
+      modal.setAttribute("data-acao", "excluir");
+    } else {
+      modal__title.innerText = "Cadastro de produto";
+      modal.setAttribute("data-acao", "adicionar");
+      DashBoardHandler.createForm();
     }
+
+    cancelButton.addEventListener("click", () => {
+      aside.classList.remove("show");
+    });
+
+    sendButton.addEventListener("click", DashBoardHandler.sendModal);
   }
-  static closeModal() {
-    const modal = document.querySelector(".modal__container");
-    modal.style.display = "none";
-  }
+
   static async sendModal(event) {
-    const productId = event.path[2].id;
-    const main__event = event.path[2].childNodes[3].childNodes[1];
-    const data__base = [...main__event];
-    const token = localStorage.getItem("Token");
-    let newTag = "";
-    const tag = document.querySelectorAll(".modal__field.modal__field--radio");
-    tag.forEach((element) => {
-      if (element.classList[3] === "modal__field--salmon") {
-        newTag = element.innerText;
+    event.currentTarget.removeEventListener("click", this.sendModal);
+    const acao = event.currentTarget
+      .closest(".modal")
+      .getAttribute("data-acao");
+    const modal = document.querySelector(".modal");
+    const aside = document.querySelector("aside");
+
+    const selected = document.querySelector(".menu__item--selected");
+
+    if (!selected.classList.contains("menu__item--all")) {
+      selected.classList.remove("menu__item--selected");
+      const all = document.querySelector(".menu__item--all");
+      all.classList.add("menu__item--selected");
+    }
+
+    WarningHandler.clearWarnings();
+    if (acao === "editar" || acao === "adicionar") {
+      const data = Object.fromEntries(
+        new FormData(document.querySelector(".modal__form")).entries()
+      );
+      const product__id = modal.getAttribute("data-id");
+      if (acao === "editar") {
+        const response = await ProductService.editProduct(
+          localStorage.getItem("Token"),
+          data,
+          product__id
+        );
+
+        if (response === "Produto Atualizado") {
+          WarningHandler.showWarning("Produto atualizado com sucesso!", false);
+          aside.classList.remove("show");
+          DashBoardHandler.listProductsInDashboard();
+        } else {
+          WarningHandler.showWarning("Ocorreu um erro :(");
+        }
+      } else {
+        const response = await ProductService.createProduct(
+          localStorage.getItem("Token"),
+          data
+        );
+
+        if (response.id) {
+          WarningHandler.showWarning("Produto adicionado com sucesso!", false);
+          aside.classList.remove("show");
+          DashBoardHandler.listProductsInDashboard();
+        } else {
+          WarningHandler.showWarning("Ocorreu um erro :(");
+        }
       }
-    });
-    const data__array = [];
-    data__base.forEach((element) => {
-      data__array.push(element.value);
-    });
-    let newValues = {
-      nome: data__array[0],
-      preco: data__array[2],
-      categoria: newTag,
-      descricao: data__array[1],
-      imagem: data__array[3],
-    };
-    console.log(newValues);
-    const modalTitle = document.querySelector("#modal__title--main");
-    if (modalTitle.innerText === "Edição de Produtos") {
-      await ProductService.editProduct(token, newValues, productId);
-      this.closeModal();
-      this.listProductsInDashboard();
     } else {
-      await ProductService.createProduct(token, newValues);
-      this.closeModal();
-      this.listProductsInDashboard();
+      const product__id = modal.getAttribute("data-id");
+
+      const response = await ProductService.deleteProduct(
+        localStorage.getItem("Token"),
+        product__id
+      );
+
+      if (response) {
+        WarningHandler.showWarning("Produto excluído com sucesso!", false);
+        aside.classList.remove("show");
+        DashBoardHandler.listProductsInDashboard();
+      } else {
+        WarningHandler.showWarning("Ocorreu um erro :(");
+      }
     }
   }
 
-  static changeTag(event, tags) {
-    const target = event.target;
-    const newA = tags.forEach((element) => {
-      if (element.classList[3] === "modal__field--salmon") {
-        element.classList.remove("modal__field--salmon");
-      }
-      target.classList.add("modal__field--salmon");
-    });
+  static closeModal() {
+    const aside = document.querySelector("aside");
+    aside.classList.remove("show");
   }
 }
