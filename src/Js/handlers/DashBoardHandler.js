@@ -1,8 +1,10 @@
+
 import { ProductService } from "../services/ProductService.js";
 import { ShowHandler } from "./ShowHandler.js";
 import { WarningHandler } from "./WarningHandler.js";
 
 export class DashBoardHandler {
+
   static addClassList(id) {
     const modal = document.getElementById(id);
     modal.classList.add("show");
@@ -43,6 +45,7 @@ export class DashBoardHandler {
     const modal = document.queryComma(id);
     modal.classList.remove("show");
   }
+
 
   static async listProductsInDashboard(privateProducts) {
     if (!privateProducts) {
@@ -368,4 +371,5 @@ export class DashBoardHandler {
     const aside = document.querySelector("aside");
     aside.classList.remove("show");
   }
+
 }
