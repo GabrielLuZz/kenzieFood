@@ -84,14 +84,13 @@ time,
 mark,
 audio,
 video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
-
 
 /* HTML5 display-role reset for older browsers */
 
@@ -106,42 +105,95 @@ hgroup,
 menu,
 nav,
 section {
-    display: block;
+  display: block;
 }
 
 body {
-    line-height: 1;
+  line-height: 1;
 }
 
 ol,
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 blockquote,
 q {
-    quotes: none;
+  quotes: none;
 }
 
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: '';
-    content: none;
+  content: "";
+  content: none;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+:root {
+  --first-color: #212529;
+  --second-color: #ff2253;
+  --third-color: #e9ecef;
+  --fontColor: #868e96;
+  --bakery: #fff7f4;
+  --fruits: #fff1f4;
+  --drinks: #f3eef5;
+  --add-button: #e4f7ef;
+  --add-button-hover: #18e791;
+  --cart--button: #f8f9fa;
+  --bg-body: #fafafa;
+  --titulos-page: #212529;
+  --font-titles-page: "Inter", sans-serif;
+  --text-page: #868e96;
+  --background-page: #ffffff;
+  --background-inputs: #eff0f0;
+  --botoes-especiais: #ff2253;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    border: none;
-    outline: 0;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  outline: 0;
+  list-style: none;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+@media (min-width: 900px) {
+  .rightSide__btn {
+    transition: all ease 0.5s;
+    border-color: var(--botoes-especiais);
+  }
+  .rightSide__photo,
+  .menuProfile__btn {
+    transition: all ease 0.5s;
+    cursor: pointer;
+  }
+
+  .menuProfile__btn {
+    border-color: var(--cart--button);
+  }
+  .rightSide__btn:hover {
+    color: var(--botoes-especiais);
+    background-color: #f8f9fa;
+  }
+  .rightSide__photo:hover {
+    transform: scale(1.1);
+  }
+
+  .menuProfile__btn:hover {
+    color: var(--cart--button);
+    background-color: var(--first-color);
+  }
 }

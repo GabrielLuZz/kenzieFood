@@ -1,5 +1,4 @@
 export class ProductService {
-
   static baseUrl = "https://api-kenzie-food.herokuapp.com";
 
   static async getPublicProducts() {
@@ -46,12 +45,13 @@ export class ProductService {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     })
       .then((resp) => {
-        return resp.json()})
+        return resp.json();
+      })
       .then((resp) => resp)
       .catch((error) => error);
 
@@ -72,4 +72,3 @@ export class ProductService {
     return response;
   }
 }
-
